@@ -1,8 +1,8 @@
 /*
  * @Author: haopeiwei
  * @Date: 2019-08-18 14:33:47
- * @LastEditors: haopeiwei
- * @LastEditTime: 2019-08-18 16:19:01
+ * @LastEditors: hpw
+ * @LastEditTime: 2019-08-19 15:24:02
  */
 module.exports = {
   root: true,
@@ -134,6 +134,8 @@ module.exports = {
     "no-with": 2, //禁用with
     //操作符前后空格
     "space-infix-ops": 0,
+    "space-before-function-paren": 0,
+    "import-fisrt": 0,
 
     //jsdoc , 参数描述&类型 && 返回值描述 &类型
     "valid-jsdoc": [
@@ -159,10 +161,12 @@ module.exports = {
     //if、else、while、for代码块用{}包围
     "curly": 1,
     // 行缩进，2个 空格 Space
-    "indent": [
-      1,
-      'tab'
-    ],
+    // "indent": [
+    //   2,
+    //   'space'
+    // ],
+    "indent": ["error", 2],
+
     // 断行标准，unix
     "linebreak-style": [
       "error",
@@ -173,6 +177,7 @@ module.exports = {
       "error",
       "always"
     ],
+    "no-tabs": [0, { allowIndentationTabs: true }]
     // }
   },
   parserOptions: {

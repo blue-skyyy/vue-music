@@ -2,7 +2,7 @@
  * @Author: haopeiwei
  * @Date: 2019-08-18 15:29:47
  * @LastEditors: haopeiwei
- * @LastEditTime: 2019-08-18 16:39:50
+ * @LastEditTime: 2019-08-19 13:53:15
  -->
 <template>
   <div class="m-header">
@@ -20,7 +20,7 @@
 // @import '@common/stylus/variable.styl';
 
 // @import 'stylus/mixin.styl';
-@import '@/common/stylus/variable.styl';
+@import '~common/stylus/variable.styl';
 
 // @import '../../common/stylus/mixin';
 .m-header {
