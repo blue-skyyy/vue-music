@@ -2,7 +2,7 @@
  * @Author: haopeiwei
  * @Date: 2019-08-19 13:58:11
  * @LastEditors: hpw
- * @LastEditTime: 2019-08-19 18:27:49
+ * @LastEditTime: 2019-08-20 19:19:22
  -->
 <template>
   <div class="recommend"
@@ -18,8 +18,7 @@
           <div v-for="(item,index) in sliderList"
                :key="index">
             <a :href="item.linkUrl">
-              <img class="needsclick"
-                   :src="item.picUrl">
+              <img :src="item.picUrl">
             </a>
           </div>
         </slider>
@@ -30,7 +29,7 @@
 </template>
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import { getRecommend } from "../../api/recommend";
+import { getRecommend, getSongLists } from "../../api/recommend";
 import Slider from "@/base/slider/slider.vue";
 
 @Component({
@@ -45,12 +44,14 @@ export default class Recommend extends Vue {
     this._getRecommend();
   }
   mounted() {
-    console.log("AAA");
+    getSongLists().then(res => {
+      console.log(typeof res);
+    });
   }
+
   private _getRecommend() {
     getRecommend().then((res: any) => {
       if (res.code === 0) {
-        console.log("res1", res);
         this.sliderList = res.data.slider;
       }
     });

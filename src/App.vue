@@ -1,14 +1,17 @@
 <!--
  * @Author: haopeiwei
  * @Date: 2019-08-18 14:33:47
- * @LastEditors: haopeiwei
- * @LastEditTime: 2019-08-19 14:10:37
+ * @LastEditors: hpw
+ * @LastEditTime: 2019-08-20 15:05:48
  -->
 <template>
   <div id="app">
     <m-header></m-header>
     <tab></tab>
-    <router-view></router-view>
+    <keep-alive>
+      <router-view></router-view>
+
+    </keep-alive>
   </div>
 </template>
 <script lang="ts">

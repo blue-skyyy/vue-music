@@ -2,7 +2,7 @@
  * @Author: hpw
  * @Date: 2019-08-18 14:33:47
  * @LastEditors: hpw
- * @LastEditTime: 2019-08-19 14:32:00
+ * @LastEditTime: 2019-08-20 18:02:30
  */
 import Vue from "vue";
 import Router from "vue-router";
@@ -19,6 +19,11 @@ export default new Router({
     {
       path: "/",
       name: "Recommend",
+      component: Recommend
+    },
+    {
+      path: "/recommend",
+      name: "Recommend1",
       component: Recommend
     },
     {

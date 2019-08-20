@@ -2,7 +2,7 @@
  * @Author: hpw
  * @Date: 2019-08-19 16:40:59
  * @LastEditors: hpw
- * @LastEditTime: 2019-08-19 20:22:54
+ * @LastEditTime: 2019-08-20 17:05:12
  -->
 <template>
   <div class="slider"
@@ -13,15 +13,17 @@
       </slot>
     </div>
     <div class="dots">
-      <!-- <span class="dot"
+      <span class="dot"
+            :key="index"
             :class="{active: currentPageIndex === index }"
-            v-for="(item, index) in dots"></span> -->
+            v-for="(item, index) in dots">
+      </span>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from "vue-property-decorator";
+import { Vue, Component } from "vue-property-decorator";
 import { addClass } from "@/common/js/dom";
 import BScroll from "better-scroll";
 @Component({})
@@ -33,43 +35,84 @@ export default class Slider extends Vue {
   // autoPlay: Boolean = false;
 
   // @Prop()
-  // interval: number = 4000;
-  loop: boolean = true;
+  interval: number = 4000;
+  isLoop: boolean = true;
   slider: any = null;
+  dots: Array<number> = [];
+  children: HTMLCollection | any = null;
+  currentPageIndex: number = 0;
+  timer: any = null;
+  isAutoPlay: boolean = true;
 
   mounted() {
     setTimeout(() => {
-      this._setSliderWidth();
+      this._setSliderWidth(false);
+      this._initDots();
       this._initSlider();
+      if (this.isAutoPlay) {
+        this._autoPlay();
+      }
     }, 20);
     // 网页加载大概17
+
+    window.addEventListener("resize", () => {
+      if (!this.slider) return;
+      this._setSliderWidth(true);
+      this.slider.refresh();
+    });
   }
 
-  _setSliderWidth() {
+  destroy() {
+    clearTimeout(this.timer);
+  }
+
+  _setSliderWidth(isResize: boolean) {
     /* eslint-disable */
-    let children = (this.$refs.sliderGroup as Element).children;
+    this.children = (this.$refs.sliderGroup as HTMLElement).children;
     let width = 0;
-    let sliderWidth = (this.$refs.slider as Element).clientWidth;
-    for (let i = 0; i < children.length; i++) {
-      let child = children[i];
+    let sliderWidth = (this.$refs.slider as HTMLElement).clientWidth;
+    for (let i = 0; i < this.children.length; i++) {
+      let child = this.children[i];
       addClass(child, "slider-item");
       (child as HTMLElement).style.width = sliderWidth + "px";
       width += sliderWidth;
     }
+    if (this.isLoop && !isResize) {
+      width += 2 * sliderWidth;
+    }
     // SE机型 1000 => 99.99
-    (this.$refs.sliderGroup as HTMLElement).style.width = width + 1 + "px";
+    (this.$refs.sliderGroup as HTMLElement).style.width = width + "px";
   }
   _initSlider() {
-    this.slider = new BScroll(this.$refs.slider as Element, {
+    this.slider = new BScroll(this.$refs.slider as HTMLElement, {
       scrollX: true,
       scrollY: false,
       momentum: false,
-      snap: true,
-      // snapLoop: 4000,
-      // snapThreshold: 0.3,
-      // snapSpeed: 400,
-      click: true
+      snap: {
+        loop: true,
+        threshold: 0.3,
+        speed: 400
+      }
     });
+
+    this.slider.on("scrollEnd", () => {
+      let pageIndex = this.slider.getCurrentPage().pageX;
+      this.currentPageIndex = pageIndex;
+      // 清除定时器
+      if (this.isAutoPlay) {
+        clearTimeout(this.timer);
+        this._autoPlay();
+      }
+    });
+  }
+  _initDots() {
+    this.dots = new Array(this.children.length);
+  }
+
+  _autoPlay() {
+    this.timer = setTimeout(() => {
+      this.slider.next();
+    }, this.interval);
   }
 }
 </script>
@@ -78,11 +121,11 @@ export default class Slider extends Vue {
 
 .slider {
   min-height: 1px;
+  position: relative;
 
   .slider-group {
     position: relative;
     overflow: hidden;
-    box-sizing: border-box;
     white-space: nowrap;
 
     .slider-item {
