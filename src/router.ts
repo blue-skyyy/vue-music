@@ -2,13 +2,13 @@
  * @Author: hpw
  * @Date: 2019-08-18 14:33:47
  * @LastEditors: hpw
- * @LastEditTime: 2019-08-20 18:02:30
+ * @LastEditTime: 2019-08-21 17:40:10
  */
 import Vue from "vue";
 import Router from "vue-router";
 import Rank from "./components/rank/rank.vue";
-import Singer from "./components/singer/singer.vue";
-import Recommend from "./components/recommend/recommend.vue";
+import Singer from "./views/Singer.vue";
+import Recommend from "./views/Recommend.vue";
 
 Vue.use(Router);
 
@@ -18,12 +18,11 @@ export default new Router({
   routes: [
     {
       path: "/",
-      name: "Recommend",
-      component: Recommend
+      redirect: "/recommend"
     },
     {
       path: "/recommend",
-      name: "Recommend1",
+      name: "Recommend",
       component: Recommend
     },
     {

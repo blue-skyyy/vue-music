@@ -2,7 +2,7 @@
  * @Author: hpw
  * @Date: 2019-08-19 18:43:36
  * @LastEditors: hpw
- * @LastEditTime: 2019-08-20 16:20:28
+ * @LastEditTime: 2019-08-21 17:26:30
  */
 
 export function addClass(el: Element, className: string): void {
