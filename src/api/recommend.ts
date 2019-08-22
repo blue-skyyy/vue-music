@@ -2,7 +2,7 @@
  * @Author: hpw
  * @Date: 2019-08-19 14:37:08
  * @LastEditors: hpw
- * @LastEditTime: 2019-08-21 19:04:33
+ * @LastEditTime: 2019-08-22 09:56:25
  */
 import jsonp from "../common/js/jsonp";
 import { commonParams, options } from "./config";
@@ -19,7 +19,7 @@ export function getRecommend(): any {
   return jsonp(url, data, options);
 }
 
-export function getSongLists() {
+export function getSongLists(): any {
   let params = {
     "-": "recom399927852486448",
     "g_tk": 1046670221,

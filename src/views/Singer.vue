@@ -2,13 +2,15 @@
  * @Author: haopeiwei
  * @Date: 2019-08-19 13:58:11
  * @LastEditors: hpw
- * @LastEditTime: 2019-08-21 20:32:24
+ * @LastEditTime: 2019-08-22 11:04:40
  -->
 <template>
   <div class="singer"
        v-if="singerList.length"
        ref="singer">
     <list-view :data="singerList"
+               @getSingerLists="_getSingerLists"
+               :titleIndex="titleIndex"
                :title="titleName"></list-view>
     <!-- <list-view @select="selectSinger"
                :data="singers"
@@ -22,6 +24,10 @@ import { getSingerLists } from "@/api/singer";
 import ListView from "@/base/listview/listview.vue";
 import configData from "./singerConfig";
 
+// interface IGetSingerListFunc {
+//   (titleIndex: string | number): void;
+// }
+
 @Component({
   components: {
     ListView
@@ -33,18 +39,18 @@ export default class Singer extends Vue {
   public titleName: string = " ";
 
   created() {
-    this._getSingerLists();
+    this._getSingerLists(this.titleIndex);
   }
 
-  _getSingerLists() {
-    getSingerLists(this.titleIndex).then((res: any) => {
+  _getSingerLists(index: any) {
+    getSingerLists(index).then((res: any) => {
       if (res.code === 0) {
-        this.singerList = res.singerList.data.singerlist.slice(0, 50);
-        this._getTitleName(this.titleIndex);
+        this.singerList = res.singerList.data.singerlist.slice(0, 15);
+        this._getTitleName(index);
+        this.titleIndex = index;
       }
     });
   }
-
   _getTitleName(id: string): void {
     this.titleName = configData.filter(d => d.id === Number(id))[0].name;
   }

@@ -2,7 +2,7 @@
  * @Author: haopeiwei
  * @Date: 2019-08-19 13:58:11
  * @LastEditors: hpw
- * @LastEditTime: 2019-08-21 18:59:55
+ * @LastEditTime: 2019-08-22 09:57:07
  -->
 <template>
   <div class="recommend"
@@ -52,7 +52,10 @@
 </template>
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import { getRecommend, getSongLists } from "@/api/recommend";
+import { getRecommend, getSongLists } from "@/api/recommend.ts";
+// import { test } from "@/api/recommend.ts";
+// import { test } from "@/api/aa";
+// import { AAA } from "@/api/singer";
 import Slider from "@/base/slider/slider.vue";
 import Scroll from "@/base/scroll/scroll.vue";
 import Loading from "@/base/loading/loading.vue";
@@ -78,6 +81,7 @@ export default class Recommend extends Vue {
     this._getRecommend();
     this._getSongLists();
   }
+
   private _getSongLists() {
     getSongLists().then((res: any) => {
       if (res.recomPlaylist.code === 0) {

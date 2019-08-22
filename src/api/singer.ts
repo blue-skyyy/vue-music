@@ -2,7 +2,7 @@
  * @Author: hpw
  * @Date: 2019-08-19 14:37:08
  * @LastEditors: hpw
- * @LastEditTime: 2019-08-21 20:24:45
+ * @LastEditTime: 2019-08-22 11:24:57
  */
 import axios from "axios";
 import { toQueryString } from "../common/js/utils";
@@ -12,7 +12,6 @@ export function getSingerLists(index: string) {
   let params = {
     "-": "getUCGI6460432320023404",
     "g_tk": 1046670221,
-    "loginUin": 936684108,
     "format": "json",
     "inCharset": "utf8",
     "outCharset": "utf - 8",
@@ -39,5 +38,3 @@ export function getSingerLists(index: string) {
     });
   });
 }
-
-

@@ -2,10 +2,11 @@
  * @Author: hpw
  * @Date: 2019-08-21 19:36:26
  * @LastEditors: hpw
- * @LastEditTime: 2019-08-21 20:40:57
+ * @LastEditTime: 2019-08-22 11:21:04
  -->
 <template>
   <Scroll class="listview"
+          ref="scroll"
           :data="data">
     <ul class="list-group">
       <h2 class="list-group-title">{{title}}</h2>
@@ -15,14 +16,14 @@
         <img class="avatar"
              v-lazy="d.singer_pic" />
         <span class="name">{{d.singer_name}}</span>
-        <!-- <p>{{d.singer_name}}</p> -->
-        <!-- <h2 class="list-group-title">{{d.}}</h2> -->
       </li>
     </ul>
 
     <ul class="list-shortcut">
       <li v-for="(d, index) in configData"
           class="item"
+          :class="{current:String(d.id) === titleIndex}"
+          @click="getSingerListsByTag(String(d.id))"
           :key="index">
         {{index === 0 ? d.name.slice(0,1) : d.name}}
       </li>
@@ -30,7 +31,7 @@
   </Scroll>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop } from "vue-property-decorator";
+import { Vue, Component, Prop, Emit } from "vue-property-decorator";
 import Scroll from "@/base/scroll/scroll.vue";
 import configData from "./singerConfig";
 @Component({
@@ -53,10 +54,31 @@ export default class Listview extends Vue {
   })
   title?: string;
 
+  @Prop({
+    type: String,
+    default: " ",
+    required: true
+  })
+  titleIndex?: string;
+
+  @Prop({
+    type: Function
+  })
+  getSingerLists?: Function;
+
   configData = configData;
 
   created() {
     this.configData.pop();
+  }
+
+  $refs!: {
+    scroll: Scroll;
+  };
+
+  @Emit("getSingerLists")
+  getSingerListsByTag(id: string) {
+    this.$refs.scroll.scrollTo(0, 0);
   }
 }
 </script>

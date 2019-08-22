@@ -2,7 +2,7 @@
  * @Author: hpw
  * @Date: 2019-08-21 11:25:49
  * @LastEditors: hpw
- * @LastEditTime: 2019-08-21 15:56:25
+ * @LastEditTime: 2019-08-22 11:23:49
  -->
 <template>
   <div ref="wrapper">
@@ -41,6 +41,10 @@ export default class Scroll extends Vue {
   }
   public refresh() {
     this.scroll && this.scroll.refresh();
+  }
+
+  public scrollTo(x: number, y: number) {
+    this.scroll && this.scroll.scrollTo(x, y, 1000);
   }
 
   @Watch("data")
