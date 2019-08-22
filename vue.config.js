@@ -2,7 +2,7 @@
  * @Author: haopeiwei
  * @Date: 2019-08-18 14:39:26
  * @LastEditors: hpw
- * @LastEditTime: 2019-08-21 17:53:59
+ * @LastEditTime: 2019-08-22 20:10:48
  */
 const path = require("path");
 
@@ -19,15 +19,19 @@ module.exports = {
         target: "https://u.y.qq.com/cgi-bin/musicu.fcg",
         changeOrigin: true,
         https: true,
-        // ws: true,
         pathRewrite: { "^/api/songList": "" }
       },
       "/api/singerList": {
         target: "https://u.y.qq.com/cgi-bin/musicu.fcg",
         changeOrigin: true,
         https: true,
-        // ws: true,
         pathRewrite: { "^/api/singerList": "" }
+      },
+      "/api/singerDetail": {
+        target: "https://u.y.qq.com/cgi-bin/musicu.fcg",
+        changeOrigin: true,
+        https: true,
+        pathRewrite: { "^/api/singerDetail": "" }
       }
     }
   },

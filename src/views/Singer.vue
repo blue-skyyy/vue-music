@@ -2,20 +2,20 @@
  * @Author: haopeiwei
  * @Date: 2019-08-19 13:58:11
  * @LastEditors: hpw
- * @LastEditTime: 2019-08-22 11:04:40
+ * @LastEditTime: 2019-08-22 19:59:13
  -->
 <template>
   <div class="singer"
        v-if="singerList.length"
        ref="singer">
+
     <list-view :data="singerList"
                @getSingerLists="_getSingerLists"
+               @selectSingerById="_selectSingerById"
                :titleIndex="titleIndex"
                :title="titleName"></list-view>
-    <!-- <list-view @select="selectSinger"
-               :data="singers"
-               ref="list"></list-view>
-    <router-view></router-view> -->
+    <router-view></router-view>
+
   </div>
 </template>
 <script lang="ts">
@@ -53,6 +53,12 @@ export default class Singer extends Vue {
   }
   _getTitleName(id: string): void {
     this.titleName = configData.filter(d => d.id === Number(id))[0].name;
+  }
+
+  _selectSingerById(singerId: string): void {
+    this.$router.push({
+      path: `/singer/${singerId}`
+    });
   }
 }
 </script>

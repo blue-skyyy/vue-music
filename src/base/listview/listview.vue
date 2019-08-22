@@ -2,7 +2,7 @@
  * @Author: hpw
  * @Date: 2019-08-21 19:36:26
  * @LastEditors: hpw
- * @LastEditTime: 2019-08-22 11:21:04
+ * @LastEditTime: 2019-08-22 16:48:58
  -->
 <template>
   <Scroll class="listview"
@@ -12,6 +12,7 @@
       <h2 class="list-group-title">{{title}}</h2>
       <li v-for="(d, index) in data"
           :key="index"
+          @click.prevent="selectSinger(d.singer_mid)"
           class="list-group-item">
         <img class="avatar"
              v-lazy="d.singer_pic" />
@@ -23,7 +24,7 @@
       <li v-for="(d, index) in configData"
           class="item"
           :class="{current:String(d.id) === titleIndex}"
-          @click="getSingerListsByTag(String(d.id))"
+          @click.prevent="getSingerListsByTag(String(d.id))"
           :key="index">
         {{index === 0 ? d.name.slice(0,1) : d.name}}
       </li>
@@ -66,6 +67,11 @@ export default class Listview extends Vue {
   })
   getSingerLists?: Function;
 
+  @Prop({
+    type: Function
+  })
+  selectSingerById?: Function;
+
   configData = configData;
 
   created() {
@@ -80,6 +86,9 @@ export default class Listview extends Vue {
   getSingerListsByTag(id: string) {
     this.$refs.scroll.scrollTo(0, 0);
   }
+
+  @Emit("selectSingerById")
+  selectSinger(singerId: string) {}
 }
 </script>
 
@@ -146,22 +155,6 @@ export default class Listview extends Vue {
       &.current {
         color: $color-theme;
       }
-    }
-  }
-
-  .list-fixed {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-
-    .fixed-title {
-      height: 30px;
-      line-height: 30px;
-      padding-left: 20px;
-      font-size: $font-size-small;
-      color: $color-text-l;
-      background: $color-highlight-background;
     }
   }
 
