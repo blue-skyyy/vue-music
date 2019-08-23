@@ -2,7 +2,7 @@
  * @Author: haopeiwei
  * @Date: 2019-08-19 13:58:11
  * @LastEditors: hpw
- * @LastEditTime: 2019-08-22 19:59:13
+ * @LastEditTime: 2019-08-23 17:23:30
  -->
 <template>
   <div class="singer"
@@ -23,10 +23,16 @@ import { Vue, Component } from "vue-property-decorator";
 import { getSingerLists } from "@/api/singer";
 import ListView from "@/base/listview/listview.vue";
 import configData from "./singerConfig";
+import { Mutation } from "vuex-class";
 
-// interface IGetSingerListFunc {
-//   (titleIndex: string | number): void;
-// }
+interface ISingerInfo {
+  country: string;
+  /* eslint-disable */
+  singer_id: number;
+  singer_mid: string;
+  singer_name: string;
+  singer_pic: string | null;
+}
 
 @Component({
   components: {
@@ -38,8 +44,11 @@ export default class Singer extends Vue {
   public titleIndex: string = "-100";
   public titleName: string = " ";
 
+  @Mutation("singer/SET_SINGER") private setSinger: any;
+
   created() {
     this._getSingerLists(this.titleIndex);
+    // console.log("getSingerA", this.getSingerA);
   }
 
   _getSingerLists(index: any) {
@@ -55,11 +64,15 @@ export default class Singer extends Vue {
     this.titleName = configData.filter(d => d.id === Number(id))[0].name;
   }
 
-  _selectSingerById(singerId: string): void {
+  _selectSingerById(singer: ISingerInfo): void {
     this.$router.push({
-      path: `/singer/${singerId}`
+      path: `/singer/${singer["singer_mid"]}`
     });
+    this.setSinger(singer);
   }
+  // ...mapMutations("singer", {
+  //   setSinger: "SETSINGER",
+  // });
 }
 </script>
 

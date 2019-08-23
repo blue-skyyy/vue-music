@@ -1,0 +1,195 @@
+// http://ws.stream.qqmusic.qq.com/C4000020VnHM0U9uNh.m4a?guid=2560880300&
+// vkey=5895CAB8AA26B48331F004E7AF33ED20FCADBD56B27CFCE5A6EBD000035D05B56F74639587566FC65729F00F3D06C345D7EA426A9242FA4F&uin=0&fromtag=66
+// http: //ws.stream.qqmusic.qq.com/C400003OU9ul1LEU9T.m4a?guid=2560880300&
+// vkey=DFFD99B1FEE4A670035EFC22411C781B540F38D40DEC70333A642C0C2632661C357787459541FEB8EFBFC2D9647E759D6918C9F2FEB71532&uin=0&fromtag=66
+// http: //ws.stream.qqmusic.qq.com/C400002E3MtF0IAMMY.m4a?guid=2560880300&
+//vkey=223E47918D51E23CCF3C5B00562BF7EC71794718655ED9D025502595546988D16B91EAEB56233DBDF48E976F250F2195AAF51A793A813EB8&uin=0&fromtag=66
+// http://ws.stream.qqmusic.qq.com/C400002E3MtF0IAMMY.m4a?guid=2560880300&
+// vkey=223E47918D51E23CCF3C5B00562BF7EC71794718655ED9D025502595546988D16B91EAEB56233DBDF48E976F250F2195AAF51A793A813EB8&uin=0&fromtag=66
+
+
+// 芒种
+//http://ws.stream.qqmusic.qq.com/C4000020VnHM0U9uNh.m4a?guid=2560880300&
+//vkey=25E219E1B4E1ECFC2F68E33A3E1975584341509CF9C0BE09DC05B770C7B2040C6411164544904B5A8842C312DA4B8BC16EA74FA6DB3B0795&uin=0&fromtag=66
+
+
+
+// 歌曲接口
+https://u.y.qq.com/cgi-bin/musicu.fcg?-=getplaysongvkey9523939096791765&
+g_tk=1046670221&loginUin=936684108&hostUin=0&format=json&inCharset=utf8&outCharset=utf-8&
+notice=0&platform=yqq.json&needNewCode=0&data=%7B%22req%22%3A%7B%22module%22%3A%22CDN.
+SrfCdnDispatchServer%22%2C%22method%22%3A%22GetCdnDispatch%22%2C%22param%22%3A%7B%22guid%22%3A%
+222560880300%22%2C%22calltype%22%3A0%2C%22userip%22%3A%22%22%7D%7D%2C%22req_0%22%3A%7B%22module%22%3A%22vkey.
+GetVkeyServer%22%2C%22method%22%3A%22CgiGetVkey%22%2C%22param%22%3A%7B%22guid%22%3A%222560880300%22%2C%22songmi
+d%22%3A%5B%220020VnHM0U9uNh%22%5D%2C%22songtype%22%3A%5B0%5D%2C%22uin%22%3A%220936684108%22%2C%22loginflag%22%3
+A1%2C%22platform%22%3A%2220%22%7D%7D%2C%22comm%22%3A%7B%22uin%22%3A%220936684108%22%2C%22format%22%3A%22json%22%2C%22ct%22%3A24%2C%22cv%22%3A0%7D%7D
+
+
+https://u.y.qq.com/cgi-bin/musicu.fcg?-=getplaysongvkey9523939096791765&
+g_tk=1046670221&loginUin=936684108&hostUin=0&format=json&inCharset=utf8&outCharset=utf-8&
+notice=0&platform=yqq.json&needNewCode=0&data={"req":{"module":"CDN.
+SrfCdnDispatchServer","method":"GetCdnDispatch","param":{"guid":%
+222560880300","calltype":0,"userip":""}},"req_0":{"module":"vkey.
+GetVkeyServer","method":"CgiGetVkey","param":{"guid":"2560880300","songmi
+d":["0020VnHM0U9uNh"],"songtype":[0],"uin":"0936684108","loginflag"%3
+A1,"platform":"20"}},"comm":{"uin":"0936684108","format":"json","ct":24,"cv":0}}
+
+
+{
+	"req": {
+		"data": {
+			"expiration": 86400,
+			"freeflowsip": ["http://220.181.91.147/amobile.music.tc.qq.com/", "http://220.181.91.148/amobile.music.tc.qq.com/", "http://220.181.91.149/amobile.music.tc.qq.com/"],
+			"keepalivefile": "C400004TsFuW2mZbRR.m4a?guid=2560880300&vkey=021F6DC481FA9C7D8B3210CC3D27ED36F84A11982CE590A5B28D1E00926F479B9CF29718C60C0EE18828B29A6DE3B585F40C1CF1C6DB05D8&uin=2636&fromtag=3",
+			"msg": "ok",
+			"retcode": 0,
+			"servercheck": "3751a905468ee5607bc737280dbf9ed3",
+			"sip": ["http://220.181.91.147/amobile.music.tc.qq.com/", "http://220.181.91.148/amobile.music.tc.qq.com/", "http://ws.stream.qqmusic.qq.com/", "http://220.181.91.149/amobile.music.tc.qq.com/", "http://isure.stream.qqmusic.qq.com/"],
+			"testfile2g": "C400003mAan70zUy5O.m4a?guid=2560880300&vkey=49696FEEE7EEE6A673734F2FBFE9AA98E5D045C0C9E29E52C8247A14CC3D9EEB4E3420B8202B9D5E512250BA2BF5284B5AD8E467F221BF2A&uin=2636&fromtag=3",
+			"testfilewifi": "C400003mAan70zUy5O.m4a?guid=2560880300&vkey=49696FEEE7EEE6A673734F2FBFE9AA98E5D045C0C9E29E52C8247A14CC3D9EEB4E3420B8202B9D5E512250BA2BF5284B5AD8E467F221BF2A&uin=2636&fromtag=3",
+			"uin": "",
+			"userip": "106.38.55.194",
+			"vkey": "13492BABA333CA4FEB9515EA09BCEC730F848065429AEF764F359566AEF242C5F2D95B270DFAB15BE1A2A8DCFC8D2832DB48F7DA92442C98"
+		},
+		"code": 0
+	},
+	"req_0": {
+		"data": {
+			"expiration": 80400,
+			"login_key": "",
+			"midurlinfo": [{
+				"common_downfromtag": 0,
+				"errtype": "",
+				"filename": "C400002TRY4a3zfxC8.m4a",
+				"flowfromtag": "",
+				"flowurl": "",
+				"hisbuy": 0,
+				"hisdown": 0,
+				"isbuy": 0,
+				"isonly": 0,
+				"onecan": 0,
+				"opi128kurl": "",
+				"opi192koggurl": "",
+				"opi192kurl": "",
+				"opi30surl": "",
+				"opi48kurl": "",
+				"opi96kurl": "",
+				"opiflackurl": "",
+				"p2pfromtag": 0,
+				"pdl": 0,
+				"pneed": 0,
+				"pneedbuy": 0,
+				"premain": 0,
+				"purl": "C400002TRY4a3zfxC8.m4a?guid=2560880300&vkey=CD73F03570DBC7E98C9834D6A5044EDCB9144C64D269CCF4F5889F20EB59A907E94D99FCAC1B59BEFDF2A945E753A394A4495555486A9A0B&uin=0&fromtag=66",
+				"qmdlfromtag": 0,
+				"result": 0,
+				"songmid": "004DXFlC0nsTCZ",
+				"tips": "",
+				"uiAlert": 0,
+				"vip_downfromtag": 0,
+				"vkey": "CD73F03570DBC7E98C9834D6A5044EDCB9144C64D269CCF4F5889F20EB59A907E94D99FCAC1B59BEFDF2A945E753A394A4495555486A9A0B",
+				"wififromtag": "",
+				"wifiurl": ""
+			}],
+			"msg": "106.38.55.194",
+			"retcode": 0,
+			"servercheck": "3751a905468ee5607bc737280dbf9ed3",
+			"sip": ["http://ws.stream.qqmusic.qq.com/", "http://isure.stream.qqmusic.qq.com/"],
+			"testfile2g": "C400003mAan70zUy5O.m4a?guid=2560880300&vkey=0BF45E1017551C4BC530922FAC237CE29A723BD1BF1055759DCE171C6E7FC0B4615FE57EB78A0409BF14AC13D84A91EEEA44B915A901E258&uin=&fromtag=3",
+			"testfilewifi": "C400003mAan70zUy5O.m4a?guid=2560880300&vkey=0BF45E1017551C4BC530922FAC237CE29A723BD1BF1055759DCE171C6E7FC0B4615FE57EB78A0409BF14AC13D84A91EEEA44B915A901E258&uin=&fromtag=3",
+			"thirdip": ["", ""],
+			"uin": "",
+			"verify_type": 0
+		},
+		"code": 0
+	},
+	"code": 0,
+	"ts": 1566549176681
+}
+
+
+{
+	"req": {
+		"data": {
+			"expiration": 86400,
+			"freeflowsip": ["http://220.181.91.153/amobile.music.tc.qq.com/", "http://220.181.91.155/amobile.music.tc.qq.com/", "http://220.181.91.156/amobile.music.tc.qq.com/"],
+			"keepalivefile": "C400004TsFuW2mZbRR.m4a?guid=2560880300&vkey=53399F3B6D2A25E83B6C243DDB0B1114E75E642A540AD1426F9C027820B9E683FF393616A1CCEB0AA7E54559C10A5EF8181287A914A13FC0&uin=2636&fromtag=3",
+			"msg": "ok",
+			"retcode": 0,
+			"servercheck": "3751a905468ee5607bc737280dbf9ed3",
+			"sip": ["http://ws.stream.qqmusic.qq.com/", "http://isure.stream.qqmusic.qq.com/", "http://220.181.91.153/amobile.music.tc.qq.com/", "http://220.181.91.155/amobile.music.tc.qq.com/", "http://220.181.91.156/amobile.music.tc.qq.com/"],
+			"testfile2g": "C400003mAan70zUy5O.m4a?guid=2560880300&vkey=33812CB497E3BE848BEC61C931D368FCE4AB1B345B4ACAD1A8C28A0205CD0EFA42A274225D6FE6769FE6B1E45CDD451EB364705F8B20B348&uin=2636&fromtag=3",
+			"testfilewifi": "C400003mAan70zUy5O.m4a?guid=2560880300&vkey=33812CB497E3BE848BEC61C931D368FCE4AB1B345B4ACAD1A8C28A0205CD0EFA42A274225D6FE6769FE6B1E45CDD451EB364705F8B20B348&uin=2636&fromtag=3",
+			"uin": "",
+			"userip": "106.38.55.194",
+			"vkey": "8F4022E937D83D84E282C59D5552DB3DCCD1C13FE4982F3AA7E84201E6CA03AC1693E6F727A817CF36FA2206A2A16BB53EDDBE9AA6176592"
+		},
+		"code": 0
+	},
+	"req_0": {
+		"data": {
+			"expiration": 80400,
+			"login_key": "",
+			"midurlinfo": [{
+				"common_downfromtag": 0,
+				"errtype": "",
+				"filename": "C4000020VnHM0U9uNh.m4a",
+				"flowfromtag": "",
+				"flowurl": "",
+				"hisbuy": 0,
+				"hisdown": 0,
+				"isbuy": 0,
+				"isonly": 0,
+				"onecan": 0,
+				"opi128kurl": "",
+				"opi192koggurl": "",
+				"opi192kurl": "",
+				"opi30surl": "",
+				"opi48kurl": "",
+				"opi96kurl": "",
+				"opiflackurl": "",
+				"p2pfromtag": 0,
+				"pdl": 0,
+				"pneed": 0,
+				"pneedbuy": 0,
+				"premain": 0,
+        可以用这个？
+				"purl": "C4000020VnHM0U9uNh.m4a?guid=2560880300&vkey=25E219E1B4E1ECFC2F68E33A3E1975584341509CF9C0BE09DC05B770C7B2040C6411164544904B5A8842C312DA4B8BC16EA74FA6DB3B0795&uin=0&fromtag=66",
+				"qmdlfromtag": 0,
+				"result": 0,
+				"songmid": "0020VnHM0U9uNh",
+				"tips": "",
+				"uiAlert": 0,
+				"vip_downfromtag": 0,
+				"vkey": "25E219E1B4E1ECFC2F68E33A3E1975584341509CF9C0BE09DC05B770C7B2040C6411164544904B5A8842C312DA4B8BC16EA74FA6DB3B0795",
+				"wififromtag": "",
+				"wifiurl": ""
+			}],
+			"msg": "106.38.55.194",
+			"retcode": 0,
+			"servercheck": "3751a905468ee5607bc737280dbf9ed3",
+			"sip": ["http://ws.stream.qqmusic.qq.com/", "http://isure.stream.qqmusic.qq.com/"],
+			"testfile2g": "C400003mAan70zUy5O.m4a?guid=2560880300&vkey=2070CCBEB19E66EEA8CE7FBF2A00F228CBB444AC55AB56C3AB8910436BDE3620FD76429F3049E42D1EB687AE797028BE75F86415F3598C9A&uin=&fromtag=3",
+			"testfilewifi": "C400003mAan70zUy5O.m4a?guid=2560880300&vkey=2070CCBEB19E66EEA8CE7FBF2A00F228CBB444AC55AB56C3AB8910436BDE3620FD76429F3049E42D1EB687AE797028BE75F86415F3598C9A&uin=&fromtag=3",
+			"thirdip": ["", ""],
+			"uin": "",
+			"verify_type": 0
+		},
+		"code": 0
+	},
+	"code": 0,
+	"ts": 1566546157042
+}
+
+芒种图片
+T002R300x300M000001QvT9r1lhLUr  singerDetail下的albumId
+
+https://y.gtimg.cn/music/photo_new/T002R300x300M000001QvT9r1lhLUr.jpg?max_age=2592000
+
+
+歌词
+https://c.y.qq.com/lyric/fcgi-bin/fcg_query_lyric_yqq.fcg?nobase64=1&musicid=233060208&-=jsonp1&g_tk=1046670221&loginUin=936684108&hostUin=0&format=json&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq.json&needNewCode=0
+
+
+// 
+http://ws.stream.qqmusic.qq.com/C4000020VnHM0U9uNh.m4a?guid=2560880300&vkey=540BE381AB1205812BDCCFB3BBD5DB535BD36FD6B7557236A7916DCC3FE49CB094666EDCE17B930D146888824E2234FB1E1EE0F827C4096D&uin=0&fromtag=66

@@ -1,0 +1,1152 @@
+{
+  "singer": {
+    "data": {
+      "songlist": [
+        {
+          "id": 200519549,
+          "type": 0,
+          "mid": "002IWBxU47dwlj",
+          "name": "红昭愿",
+          "title": "红昭愿",
+          "subtitle": "",
+          "singer": [
+            {
+              "id": 1288409,
+              "mid": "002vALgR3hRRlv",
+              "name": "音阙诗听",
+              "title": "音阙诗听",
+              "type": 2,
+              "uin": 553768204
+            }
+          ],
+          "album": {
+            "id": 1825649,
+            "mid": "004fqcR20kKXfn",
+            "name": "红昭愿",
+            "title": "红昭愿",
+            "subtitle": "",
+            "time_public": "2017-01-18"
+          },
+          "mv": {
+            "id": 0,
+            "vid": "",
+            "name": "",
+            "title": ""
+          },
+          "interval": 173,
+          "isonly": 0,
+          "language": 0,
+          "genre": 1,
+          "index_cd": 0,
+          "index_album": 1,
+          "time_public": "2017-01-18",
+          "status": 0,
+          "fnote": 4009,
+          "file": {
+            "media_mid": "003OU9ul1LEU9T",
+            "size_24aac": 538289,
+            "size_48aac": 1056260,
+            "size_96aac": 2112323,
+            "size_192ogg": 3955285,
+            "size_192aac": 4191696,
+            "size_128mp3": 2772519,
+            "size_320mp3": 6931004,
+            "size_ape": 18855846,
+            "size_flac": 18997632,
+            "size_dts": 0,
+            "size_try": 0,
+            "try_begin": 68249,
+            "try_end": 86582,
+            "url": "",
+            "size_hires": 0,
+            "hires_sample": 0,
+            "hires_bitdepth": 0,
+            "b_30s": 0,
+            "e_30s": 0
+          },
+          "pay": {
+            "pay_month": 1,
+            "price_track": 200,
+            "price_album": 0,
+            "pay_play": 0,
+            "pay_down": 1,
+            "pay_status": 0,
+            "time_free": 0
+          },
+          "action": {
+            "switch": 17413891,
+            "msgid": 14,
+            "alert": 2,
+            "icons": 8527740,
+            "msgshare": 0,
+            "msgfav": 0,
+            "msgdown": 0,
+            "msgpay": 6
+          },
+          "ksong": {
+            "id": 2494201,
+            "mid": "003PYN162euC4v"
+          },
+          "volume": {
+            "gain": -6.881,
+            "peak": 0.953,
+            "lra": 5.574
+          },
+          "label": "0",
+          "url": "http://stream9.qqmusic.qq.com/212519549.wma",
+          "bpm": 115,
+          "version": 0,
+          "trace": "",
+          "data_type": 0,
+          "modify_stamp": 0,
+          "pingpong": ""
+        },
+        {
+          "id": 233060208,
+          "type": 0,
+          "mid": "0020VnHM0U9uNh",
+          "name": "芒种",
+          "title": "芒种",
+          "subtitle": "",
+          "singer": [
+            {
+              "id": 1288409,
+              "mid": "002vALgR3hRRlv",
+              "name": "音阙诗听",
+              "title": "音阙诗听",
+              "type": 2,
+              "uin": 553768204
+            },
+            {
+              "id": 1327288,
+              "mid": "001xruwk2A0Vw7",
+              "name": "赵方婧",
+              "title": "赵方婧",
+              "type": 1,
+              "uin": 0
+            }
+          ],
+          "album": {
+            "id": 6963623,
+            "mid": "001QvT9r1lhLUr",
+            "name": "芒种",
+            "title": "芒种",
+            "subtitle": "",
+            "time_public": "2019-06-06"
+          },
+          "mv": {
+            "id": 0,
+            "vid": "",
+            "name": "",
+            "title": ""
+          },
+          "interval": 216,
+          "isonly": 0,
+          "language": 0,
+          "genre": 0,
+          "index_cd": 0,
+          "index_album": 1,
+          "time_public": "2019-06-06",
+          "status": 0,
+          "fnote": 4009,
+          "file": {
+            "media_mid": "0020VnHM0U9uNh",
+            "size_24aac": 672440,
+            "size_48aac": 1315790,
+            "size_96aac": 2639973,
+            "size_192ogg": 4874258,
+            "size_192aac": 5225550,
+            "size_128mp3": 3457132,
+            "size_320mp3": 8642543,
+            "size_ape": 0,
+            "size_flac": 21883878,
+            "size_dts": 0,
+            "size_try": 960887,
+            "try_begin": 70783,
+            "try_end": 102175,
+            "url": "",
+            "size_hires": 0,
+            "hires_sample": 0,
+            "hires_bitdepth": 0,
+            "b_30s": 0,
+            "e_30s": 60000
+          },
+          "pay": {
+            "pay_month": 1,
+            "price_track": 200,
+            "price_album": 0,
+            "pay_play": 0,
+            "pay_down": 1,
+            "pay_status": 0,
+            "time_free": 0
+          },
+          "action": {
+            "switch": 17413891,
+            "msgid": 14,
+            "alert": 2,
+            "icons": 8527740,
+            "msgshare": 0,
+            "msgfav": 0,
+            "msgdown": 0,
+            "msgpay": 6
+          },
+          "ksong": {
+            "id": 5776531,
+            "mid": "000OKZnn4SUtmo"
+          },
+          "volume": {
+            "gain": -8.227,
+            "peak": 0.954,
+            "lra": 9.49
+          },
+          "label": "0",
+          "url": "http://stream0.qqmusic.qq.com/245060208.wma",
+          "bpm": 100,
+          "version": 0,
+          "trace": "",
+          "data_type": 0,
+          "modify_stamp": 0,
+          "pingpong": ""
+        },
+        {
+          "id": 230131661,
+          "type": 0,
+          "mid": "001SCeNA1ysL0k",
+          "name": "空山新雨后",
+          "title": "空山新雨后",
+          "subtitle": "",
+          "singer": [
+            {
+              "id": 1288409,
+              "mid": "002vALgR3hRRlv",
+              "name": "音阙诗听",
+              "title": "音阙诗听",
+              "type": 2,
+              "uin": 553768204
+            },
+            {
+              "id": 1291548,
+              "mid": "001bxCO73o8tjS",
+              "name": "锦零",
+              "title": "锦零",
+              "type": 1,
+              "uin": 0
+            }
+          ],
+          "album": {
+            "id": 6431287,
+            "mid": "0027M7lP3r8WzL",
+            "name": "空山新雨后",
+            "title": "空山新雨后",
+            "subtitle": "",
+            "time_public": "2019-03-18"
+          },
+          "mv": {
+            "id": 0,
+            "vid": "",
+            "name": "",
+            "title": ""
+          },
+          "interval": 173,
+          "isonly": 0,
+          "language": 0,
+          "genre": 0,
+          "index_cd": 0,
+          "index_album": 1,
+          "time_public": "2019-03-18",
+          "status": 0,
+          "fnote": 4009,
+          "file": {
+            "media_mid": "001SCeNA1ysL0k",
+            "size_24aac": 538718,
+            "size_48aac": 1054027,
+            "size_96aac": 2116657,
+            "size_192ogg": 4045315,
+            "size_192aac": 4197306,
+            "size_128mp3": 2779214,
+            "size_320mp3": 6947730,
+            "size_ape": 0,
+            "size_flac": 20118572,
+            "size_dts": 0,
+            "size_try": 0,
+            "try_begin": 64683,
+            "try_end": 88299,
+            "url": "",
+            "size_hires": 0,
+            "hires_sample": 0,
+            "hires_bitdepth": 0,
+            "b_30s": 0,
+            "e_30s": 0
+          },
+          "pay": {
+            "pay_month": 1,
+            "price_track": 200,
+            "price_album": 0,
+            "pay_play": 0,
+            "pay_down": 1,
+            "pay_status": 0,
+            "time_free": 0
+          },
+          "action": {
+            "switch": 17413891,
+            "msgid": 14,
+            "alert": 2,
+            "icons": 8527740,
+            "msgshare": 0,
+            "msgfav": 0,
+            "msgdown": 0,
+            "msgpay": 6
+          },
+          "ksong": {
+            "id": 5615032,
+            "mid": "000PchZn3AbOAS"
+          },
+          "volume": {
+            "gain": -9.329,
+            "peak": 0.947,
+            "lra": 4.552
+          },
+          "label": "0",
+          "url": "http://stream0.qqmusic.qq.com/242131661.wma",
+          "bpm": 93,
+          "version": 0,
+          "trace": "",
+          "data_type": 0,
+          "modify_stamp": 0,
+          "pingpong": ""
+        },
+        {
+          "id": 214252051,
+          "type": 0,
+          "mid": "002qNQ5B4fGC6t",
+          "name": "离人殇",
+          "title": "离人殇",
+          "subtitle": "",
+          "singer": [
+            {
+              "id": 1327288,
+              "mid": "001xruwk2A0Vw7",
+              "name": "赵方婧",
+              "title": "赵方婧",
+              "type": 1,
+              "uin": 0
+            },
+            {
+              "id": 1288409,
+              "mid": "002vALgR3hRRlv",
+              "name": "音阙诗听",
+              "title": "音阙诗听",
+              "type": 2,
+              "uin": 553768204
+            }
+          ],
+          "album": {
+            "id": 4022897,
+            "mid": "000vOixt0C18cV",
+            "name": "默认专辑",
+            "title": "默认专辑",
+            "subtitle": "",
+            "time_public": "2017-07-24"
+          },
+          "mv": {
+            "id": 0,
+            "vid": "",
+            "name": "",
+            "title": ""
+          },
+          "interval": 201,
+          "isonly": 0,
+          "language": 0,
+          "genre": 0,
+          "index_cd": 0,
+          "index_album": 0,
+          "time_public": "2017-07-24",
+          "status": 31,
+          "fnote": 0,
+          "file": {
+            "media_mid": "004d8dQ73xeyBt",
+            "size_24aac": 627406,
+            "size_48aac": 1227446,
+            "size_96aac": 2457553,
+            "size_192ogg": 4726580,
+            "size_192aac": 4865697,
+            "size_128mp3": 3226856,
+            "size_320mp3": 8066421,
+            "size_ape": 23014558,
+            "size_flac": 23128209,
+            "size_dts": 0,
+            "size_try": 0,
+            "try_begin": 59100,
+            "try_end": 78888,
+            "url": "",
+            "size_hires": 0,
+            "hires_sample": 0,
+            "hires_bitdepth": 0,
+            "b_30s": 0,
+            "e_30s": 0
+          },
+          "pay": {
+            "pay_month": 0,
+            "price_track": 0,
+            "price_album": 0,
+            "pay_play": 0,
+            "pay_down": 0,
+            "pay_status": 0,
+            "time_free": 0
+          },
+          "action": {
+            "switch": 605971,
+            "msgid": 0,
+            "alert": 11,
+            "icons": 135752,
+            "msgshare": 0,
+            "msgfav": 0,
+            "msgdown": 0,
+            "msgpay": 0
+          },
+          "ksong": {
+            "id": 2845414,
+            "mid": "001efNsO2I9jbj"
+          },
+          "volume": {
+            "gain": -6.971,
+            "peak": 0.976,
+            "lra": 5.512
+          },
+          "label": "0",
+          "url": "http://stream0.qqmusic.qq.com/226252051.wma",
+          "bpm": 100,
+          "version": 0,
+          "trace": "",
+          "data_type": 0,
+          "modify_stamp": 0,
+          "pingpong": ""
+        },
+        {
+          "id": 230683695,
+          "type": 0,
+          "mid": "002RSvzd3DoJRf",
+          "name": "桃花庵",
+          "title": "桃花庵",
+          "subtitle": "",
+          "singer": [
+            {
+              "id": 1288409,
+              "mid": "002vALgR3hRRlv",
+              "name": "音阙诗听",
+              "title": "音阙诗听",
+              "type": 2,
+              "uin": 553768204
+            },
+            {
+              "id": 974419,
+              "mid": "002QQzkl3o3nx1",
+              "name": "封茗囧菌",
+              "title": "封茗囧菌",
+              "type": 1,
+              "uin": 0
+            }
+          ],
+          "album": {
+            "id": 6530683,
+            "mid": "002hqS0b13OGWG",
+            "name": "桃花庵",
+            "title": "桃花庵",
+            "subtitle": "",
+            "time_public": "2019-03-30"
+          },
+          "mv": {
+            "id": 1516149,
+            "vid": "k003003agkd",
+            "name": "",
+            "title": ""
+          },
+          "interval": 182,
+          "isonly": 0,
+          "language": 0,
+          "genre": 0,
+          "index_cd": 0,
+          "index_album": 1,
+          "time_public": "2019-03-30",
+          "status": 0,
+          "fnote": 4009,
+          "file": {
+            "media_mid": "002RSvzd3DoJRf",
+            "size_24aac": 568263,
+            "size_48aac": 1113299,
+            "size_96aac": 2230007,
+            "size_192ogg": 4321328,
+            "size_192aac": 4416924,
+            "size_128mp3": 2923820,
+            "size_320mp3": 7309257,
+            "size_ape": 0,
+            "size_flac": 21819830,
+            "size_dts": 0,
+            "size_try": 0,
+            "try_begin": 34136,
+            "try_end": 58296,
+            "url": "",
+            "size_hires": 0,
+            "hires_sample": 0,
+            "hires_bitdepth": 0,
+            "b_30s": 0,
+            "e_30s": 0
+          },
+          "pay": {
+            "pay_month": 1,
+            "price_track": 200,
+            "price_album": 0,
+            "pay_play": 0,
+            "pay_down": 1,
+            "pay_status": 0,
+            "time_free": 0
+          },
+          "action": {
+            "switch": 17413891,
+            "msgid": 14,
+            "alert": 2,
+            "icons": 8527740,
+            "msgshare": 0,
+            "msgfav": 0,
+            "msgdown": 0,
+            "msgpay": 6
+          },
+          "ksong": {
+            "id": 5631356,
+            "mid": "002eNjMl1tzXhO"
+          },
+          "volume": {
+            "gain": -8.783,
+            "peak": 0.996,
+            "lra": 4.773
+          },
+          "label": "0",
+          "url": "http://stream0.qqmusic.qq.com/242683695.wma",
+          "bpm": 85,
+          "version": 0,
+          "trace": "",
+          "data_type": 0,
+          "modify_stamp": 0,
+          "pingpong": ""
+        },
+        {
+          "id": 217248577,
+          "type": 0,
+          "mid": "000pVN9S0zP6WQ",
+          "name": "夜宴风波",
+          "title": "夜宴风波",
+          "subtitle": "",
+          "singer": [
+            {
+              "id": 1288409,
+              "mid": "002vALgR3hRRlv",
+              "name": "音阙诗听",
+              "title": "音阙诗听",
+              "type": 2,
+              "uin": 553768204
+            },
+            {
+              "id": 1156088,
+              "mid": "004WPeqa0SMAWf",
+              "name": "王梓钰",
+              "title": "王梓钰",
+              "type": 1,
+              "uin": 0
+            }
+          ],
+          "album": {
+            "id": 5576982,
+            "mid": "000rmUB144ltMD",
+            "name": "等你来见（中国名画系列七部曲）",
+            "title": "等你来见（中国名画系列七部曲）",
+            "subtitle": "",
+            "time_public": "2018-12-15"
+          },
+          "mv": {
+            "id": 1485639,
+            "vid": "y0027vzdrp5",
+            "name": "",
+            "title": ""
+          },
+          "interval": 204,
+          "isonly": 0,
+          "language": 0,
+          "genre": 1,
+          "index_cd": 0,
+          "index_album": 2,
+          "time_public": "2018-12-15",
+          "status": 0,
+          "fnote": 4009,
+          "file": {
+            "media_mid": "000pVN9S0zP6WQ",
+            "size_24aac": 634981,
+            "size_48aac": 1243913,
+            "size_96aac": 2494287,
+            "size_192ogg": 4839436,
+            "size_192aac": 4935101,
+            "size_128mp3": 3267405,
+            "size_320mp3": 8167656,
+            "size_ape": 0,
+            "size_flac": 23292435,
+            "size_dts": 0,
+            "size_try": 0,
+            "try_begin": 65755,
+            "try_end": 89681,
+            "url": "",
+            "size_hires": 0,
+            "hires_sample": 0,
+            "hires_bitdepth": 0,
+            "b_30s": 0,
+            "e_30s": 0
+          },
+          "pay": {
+            "pay_month": 1,
+            "price_track": 200,
+            "price_album": 0,
+            "pay_play": 0,
+            "pay_down": 1,
+            "pay_status": 0,
+            "time_free": 0
+          },
+          "action": {
+            "switch": 17413891,
+            "msgid": 14,
+            "alert": 2,
+            "icons": 8527740,
+            "msgshare": 0,
+            "msgfav": 0,
+            "msgdown": 0,
+            "msgpay": 6
+          },
+          "ksong": {
+            "id": 4736603,
+            "mid": "003GbYWb4D1WLc"
+          },
+          "volume": {
+            "gain": -8.663,
+            "peak": 1,
+            "lra": 7.654
+          },
+          "label": "0",
+          "url": "http://stream6.qqmusic.qq.com/229248577.wma",
+          "bpm": 89,
+          "version": 0,
+          "trace": "",
+          "data_type": 0,
+          "modify_stamp": 0,
+          "pingpong": ""
+        },
+        {
+          "id": 214103695,
+          "type": 0,
+          "mid": "003VwwNA2iYZe7",
+          "name": "惊蛰",
+          "title": "惊蛰",
+          "subtitle": "",
+          "singer": [
+            {
+              "id": 1288409,
+              "mid": "002vALgR3hRRlv",
+              "name": "音阙诗听",
+              "title": "音阙诗听",
+              "type": 2,
+              "uin": 553768204
+            },
+            {
+              "id": 1156088,
+              "mid": "004WPeqa0SMAWf",
+              "name": "王梓钰",
+              "title": "王梓钰",
+              "type": 1,
+              "uin": 0
+            }
+          ],
+          "album": {
+            "id": 4078371,
+            "mid": "003uy9Ga4RX9c5",
+            "name": "惊蛰",
+            "title": "惊蛰",
+            "subtitle": "",
+            "time_public": "2018-06-16"
+          },
+          "mv": {
+            "id": 0,
+            "vid": "",
+            "name": "",
+            "title": ""
+          },
+          "interval": 241,
+          "isonly": 0,
+          "language": 0,
+          "genre": 1,
+          "index_cd": 0,
+          "index_album": 1,
+          "time_public": "2018-06-16",
+          "status": 0,
+          "fnote": 4009,
+          "file": {
+            "media_mid": "003VwwNA2iYZe7",
+            "size_24aac": 750620,
+            "size_48aac": 1471774,
+            "size_96aac": 2953118,
+            "size_192ogg": 5910064,
+            "size_192aac": 5855149,
+            "size_128mp3": 3872583,
+            "size_320mp3": 9681171,
+            "size_ape": 28812182,
+            "size_flac": 28647846,
+            "size_dts": 0,
+            "size_try": 0,
+            "try_begin": 47576,
+            "try_end": 82077,
+            "url": "",
+            "size_hires": 0,
+            "hires_sample": 0,
+            "hires_bitdepth": 0,
+            "b_30s": 0,
+            "e_30s": 0
+          },
+          "pay": {
+            "pay_month": 1,
+            "price_track": 200,
+            "price_album": 0,
+            "pay_play": 0,
+            "pay_down": 1,
+            "pay_status": 0,
+            "time_free": 0
+          },
+          "action": {
+            "switch": 17413891,
+            "msgid": 14,
+            "alert": 2,
+            "icons": 8527740,
+            "msgshare": 0,
+            "msgfav": 0,
+            "msgdown": 0,
+            "msgpay": 6
+          },
+          "ksong": {
+            "id": 3862812,
+            "mid": "002VLgg52L2mG7"
+          },
+          "volume": {
+            "gain": -9.523,
+            "peak": 0.944,
+            "lra": 6.614
+          },
+          "label": "0",
+          "url": "http://stream1.qqmusic.qq.com/226103695.wma",
+          "bpm": 122,
+          "version": 0,
+          "trace": "",
+          "data_type": 0,
+          "modify_stamp": 0,
+          "pingpong": ""
+        },
+        {
+          "id": 234279748,
+          "type": 0,
+          "mid": "004IGF0L3kV4W8",
+          "name": "高唐",
+          "title": "高唐",
+          "subtitle": "《逆水寒》游戏同人曲",
+          "singer": [
+            {
+              "id": 1288409,
+              "mid": "002vALgR3hRRlv",
+              "name": "音阙诗听",
+              "title": "音阙诗听",
+              "type": 2,
+              "uin": 553768204
+            },
+            {
+              "id": 1156088,
+              "mid": "004WPeqa0SMAWf",
+              "name": "王梓钰",
+              "title": "王梓钰",
+              "type": 1,
+              "uin": 0
+            }
+          ],
+          "album": {
+            "id": 7145298,
+            "mid": "001HFuGK1GCaZk",
+            "name": "高唐",
+            "title": "高唐",
+            "subtitle": "《逆水寒》游戏同人曲",
+            "time_public": "2019-07-10"
+          },
+          "mv": {
+            "id": 0,
+            "vid": "",
+            "name": "",
+            "title": ""
+          },
+          "interval": 212,
+          "isonly": 0,
+          "language": 0,
+          "genre": 37,
+          "index_cd": 0,
+          "index_album": 1,
+          "time_public": "2019-07-10",
+          "status": 31,
+          "fnote": 0,
+          "file": {
+            "media_mid": "004IGF0L3kV4W8",
+            "size_24aac": 661470,
+            "size_48aac": 1294849,
+            "size_96aac": 2593933,
+            "size_192ogg": 5013855,
+            "size_192aac": 5109515,
+            "size_128mp3": 3393184,
+            "size_320mp3": 8482673,
+            "size_ape": 0,
+            "size_flac": 46779718,
+            "size_dts": 0,
+            "size_try": 960887,
+            "try_begin": 0,
+            "try_end": 0,
+            "url": "",
+            "size_hires": 0,
+            "hires_sample": 0,
+            "hires_bitdepth": 0,
+            "b_30s": 0,
+            "e_30s": 60000
+          },
+          "pay": {
+            "pay_month": 0,
+            "price_track": 0,
+            "price_album": 0,
+            "pay_play": 0,
+            "pay_down": 0,
+            "pay_status": 0,
+            "time_free": 0
+          },
+          "action": {
+            "switch": 605971,
+            "msgid": 0,
+            "alert": 11,
+            "icons": 135752,
+            "msgshare": 0,
+            "msgfav": 0,
+            "msgdown": 0,
+            "msgpay": 0
+          },
+          "ksong": {
+            "id": 6039975,
+            "mid": "003fdZtK1tgz2N"
+          },
+          "volume": {
+            "gain": -9.012,
+            "peak": 1,
+            "lra": 9.125
+          },
+          "label": "0",
+          "url": "http://stream0.qqmusic.qq.com/246279748.wma",
+          "bpm": 103,
+          "version": 0,
+          "trace": "",
+          "data_type": 0,
+          "modify_stamp": 0,
+          "pingpong": ""
+        },
+        {
+          "id": 233971625,
+          "type": 0,
+          "mid": "002qW64m31o1GK",
+          "name": "说客",
+          "title": "说客",
+          "subtitle": "",
+          "singer": [
+            {
+              "id": 1288409,
+              "mid": "002vALgR3hRRlv",
+              "name": "音阙诗听",
+              "title": "音阙诗听",
+              "type": 2,
+              "uin": 553768204
+            },
+            {
+              "id": 1512041,
+              "mid": "00428pcM4ctKFo",
+              "name": "新乐尘符",
+              "title": "新乐尘符",
+              "type": 2,
+              "uin": 0
+            }
+          ],
+          "album": {
+            "id": 7101048,
+            "mid": "001vvgGS1XBrpg",
+            "name": "说客",
+            "title": "说客",
+            "subtitle": "",
+            "time_public": "2019-07-05"
+          },
+          "mv": {
+            "id": 0,
+            "vid": "",
+            "name": "",
+            "title": ""
+          },
+          "interval": 233,
+          "isonly": 0,
+          "language": 0,
+          "genre": 0,
+          "index_cd": 0,
+          "index_album": 1,
+          "time_public": "2019-07-05",
+          "status": 0,
+          "fnote": 4009,
+          "file": {
+            "media_mid": "003bB8UO3yTB2v",
+            "size_24aac": 728359,
+            "size_48aac": 1425349,
+            "size_96aac": 2861894,
+            "size_192ogg": 5501092,
+            "size_192aac": 5632158,
+            "size_128mp3": 3734657,
+            "size_320mp3": 9335978,
+            "size_ape": 0,
+            "size_flac": 27227824,
+            "size_dts": 0,
+            "size_try": 0,
+            "try_begin": 0,
+            "try_end": 0,
+            "url": "",
+            "size_hires": 0,
+            "hires_sample": 0,
+            "hires_bitdepth": 0,
+            "b_30s": 0,
+            "e_30s": 0
+          },
+          "pay": {
+            "pay_month": 1,
+            "price_track": 200,
+            "price_album": 0,
+            "pay_play": 0,
+            "pay_down": 1,
+            "pay_status": 0,
+            "time_free": 0
+          },
+          "action": {
+            "switch": 17413891,
+            "msgid": 14,
+            "alert": 2,
+            "icons": 8527740,
+            "msgshare": 0,
+            "msgfav": 0,
+            "msgdown": 0,
+            "msgpay": 6
+          },
+          "ksong": {
+            "id": 6026131,
+            "mid": "004FVSXG3PrZcV"
+          },
+          "volume": {
+            "gain": -7.638,
+            "peak": 0.967,
+            "lra": 5.38
+          },
+          "label": "0",
+          "url": "http://stream0.qqmusic.qq.com/245971625.wma",
+          "bpm": 72,
+          "version": 0,
+          "trace": "",
+          "data_type": 0,
+          "modify_stamp": 0,
+          "pingpong": ""
+        },
+        {
+          "id": 234850092,
+          "type": 0,
+          "mid": "0036nvak2GHfFw",
+          "name": "大暑",
+          "title": "大暑",
+          "subtitle": "",
+          "singer": [
+            {
+              "id": 1288409,
+              "mid": "002vALgR3hRRlv",
+              "name": "音阙诗听",
+              "title": "音阙诗听",
+              "type": 2,
+              "uin": 553768204
+            },
+            {
+              "id": 1123971,
+              "mid": "002FRXMl0tQMZd",
+              "name": "李佳思",
+              "title": "李佳思",
+              "type": 1,
+              "uin": 0
+            }
+          ],
+          "album": {
+            "id": 7221388,
+            "mid": "002WEX3x0aY7xx",
+            "name": "大暑",
+            "title": "大暑",
+            "subtitle": "",
+            "time_public": "2019-07-23"
+          },
+          "mv": {
+            "id": 0,
+            "vid": "",
+            "name": "",
+            "title": ""
+          },
+          "interval": 248,
+          "isonly": 0,
+          "language": 0,
+          "genre": 0,
+          "index_cd": 0,
+          "index_album": 1,
+          "time_public": "2019-07-23",
+          "status": 0,
+          "fnote": 4009,
+          "file": {
+            "media_mid": "0036nvak2GHfFw",
+            "size_24aac": 770981,
+            "size_48aac": 1513086,
+            "size_96aac": 3023963,
+            "size_192ogg": 6043191,
+            "size_192aac": 6011506,
+            "size_128mp3": 3977073,
+            "size_320mp3": 9942396,
+            "size_ape": 0,
+            "size_flac": 31639566,
+            "size_dts": 0,
+            "size_try": 960887,
+            "try_begin": 0,
+            "try_end": 0,
+            "url": "",
+            "size_hires": 0,
+            "hires_sample": 0,
+            "hires_bitdepth": 0,
+            "b_30s": 0,
+            "e_30s": 60000
+          },
+          "pay": {
+            "pay_month": 1,
+            "price_track": 200,
+            "price_album": 0,
+            "pay_play": 0,
+            "pay_down": 1,
+            "pay_status": 0,
+            "time_free": 0
+          },
+          "action": {
+            "switch": 17413891,
+            "msgid": 14,
+            "alert": 2,
+            "icons": 8527740,
+            "msgshare": 0,
+            "msgfav": 0,
+            "msgdown": 0,
+            "msgpay": 6
+          },
+          "ksong": {
+            "id": 6052867,
+            "mid": "002NplTk4ccqVg"
+          },
+          "volume": {
+            "gain": -9.644,
+            "peak": 0.944,
+            "lra": 9.278
+          },
+          "label": "0",
+          "url": "http://stream0.qqmusic.qq.com/246850092.wma",
+          "bpm": 125,
+          "version": 0,
+          "trace": "",
+          "data_type": 0,
+          "modify_stamp": 0,
+          "pingpong": ""
+        }
+      ],
+      "singer_info": {
+        "area": 1,
+        "attribute4": 2,
+        "genre": 0,
+        "other_name": "",
+        "id": 1288409,
+        "mid": "002vALgR3hRRlv",
+        "name": "音阙诗听",
+        "fans": 614101
+      },
+      "singer_brief": "中国特色音乐实验室——音阙诗听。音阙诗听音乐社团成立于2016年11月1日，由殇小谨与李俊羽发起组织，围绕中国特色音乐实验室，为有趣的音乐发声而聚集了全国各地一群对传统与流行音乐有相同和理念的朋友。本着以音乐实验室为出发点，塑造全新的互联网音乐实验团体。成员在曲，词，演奏，演唱，后期，制作，美工，宣传等方面各展其长。",
+      "music_grp": [],
+      "total_album": 104,
+      "total_mv": 14,
+      "total_song": 199,
+      "yinyueren": "2",
+      "show_singer_desc": true,
+      "extras": [
+        {
+          "listen_count": 138671605,
+          "upload_time": "2017-01-18 15:41:43",
+          "is_only": 0,
+          "is_new": 0
+        },
+        {
+          "listen_count": 133016654,
+          "upload_time": "2019-06-05 15:50:00",
+          "is_only": 0,
+          "is_new": 1
+        },
+        {
+          "listen_count": 108078634,
+          "upload_time": "2019-03-18 10:36:38",
+          "is_only": 0,
+          "is_new": 0
+        },
+        {
+          "listen_count": 107783378,
+          "upload_time": "2018-07-02 20:28:01",
+          "is_only": 0,
+          "is_new": 0
+        },
+        {
+          "listen_count": 103584173,
+          "upload_time": "2019-03-28 10:30:19",
+          "is_only": 0,
+          "is_new": 0
+        },
+        {
+          "listen_count": 102291729,
+          "upload_time": "2018-09-14 11:53:13",
+          "is_only": 0,
+          "is_new": 0
+        },
+        {
+          "listen_count": 102135194,
+          "upload_time": "2018-06-13 18:20:30",
+          "is_only": 0,
+          "is_new": 0
+        },
+        {
+          "listen_count": 101213537,
+          "upload_time": "2019-07-09 18:17:44",
+          "is_only": 0,
+          "is_new": 1
+        },
+        {
+          "listen_count": 101035065,
+          "upload_time": "2019-07-03 10:40:44",
+          "is_only": 0,
+          "is_new": 1
+        },
+        {
+          "listen_count": 100978881,
+          "upload_time": "2019-07-22 18:03:48",
+          "is_only": 0,
+          "is_new": 1
+        }
+      ]
+    },
+    "code": 0
+  },
+  "code": 0,
+  "ts": 1566542173782
+}

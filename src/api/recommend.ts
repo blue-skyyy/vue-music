@@ -2,12 +2,12 @@
  * @Author: hpw
  * @Date: 2019-08-19 14:37:08
  * @LastEditors: hpw
- * @LastEditTime: 2019-08-22 09:56:25
+ * @LastEditTime: 2019-08-23 17:54:31
  */
-import jsonp from "../common/js/jsonp";
+import jsonp from "../common/ts/jsonp";
 import { commonParams, options } from "./config";
 import axios from "axios";
-import { toQueryString } from "../common/js/utils";
+import { toQueryString } from "../common/ts/utils";
 
 export function getRecommend(): any {
   const url = "https://c.y.qq.com/musichall/fcgi-bin/fcg_yqqhomepagerecommend.fcg";

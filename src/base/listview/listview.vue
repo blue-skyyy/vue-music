@@ -2,7 +2,7 @@
  * @Author: hpw
  * @Date: 2019-08-21 19:36:26
  * @LastEditors: hpw
- * @LastEditTime: 2019-08-22 16:48:58
+ * @LastEditTime: 2019-08-23 10:57:34
  -->
 <template>
   <Scroll class="listview"
@@ -12,7 +12,7 @@
       <h2 class="list-group-title">{{title}}</h2>
       <li v-for="(d, index) in data"
           :key="index"
-          @click.prevent="selectSinger(d.singer_mid)"
+          @click.prevent="selectSinger(d)"
           class="list-group-item">
         <img class="avatar"
              v-lazy="d.singer_pic" />
@@ -88,7 +88,7 @@ export default class Listview extends Vue {
   }
 
   @Emit("selectSingerById")
-  selectSinger(singerId: string) {}
+  selectSinger(singer: object) {}
 }
 </script>
 

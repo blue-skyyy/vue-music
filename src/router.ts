@@ -2,7 +2,7 @@
  * @Author: hpw
  * @Date: 2019-08-18 14:33:47
  * @LastEditors: hpw
- * @LastEditTime: 2019-08-22 18:07:19
+ * @LastEditTime: 2019-08-23 10:53:57
  */
 import Vue from "vue";
 import Router from "vue-router";
@@ -10,11 +10,6 @@ import Rank from "./components/rank/rank.vue";
 import Singer from "./views/Singer.vue";
 import Recommend from "./views/Recommend.vue";
 import SingerDetail from "./views/SingerDetail.vue";
-
-// Router.prototype.goBack = function () {  
-//   this.isBack = true
-//   window.history.go(-1)
-// }
 
 Vue.use(Router);
 

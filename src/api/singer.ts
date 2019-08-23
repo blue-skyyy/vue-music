@@ -2,10 +2,10 @@
  * @Author: hpw
  * @Date: 2019-08-19 14:37:08
  * @LastEditors: hpw
- * @LastEditTime: 2019-08-22 11:24:57
+ * @LastEditTime: 2019-08-23 17:54:31
  */
 import axios from "axios";
-import { toQueryString } from "../common/js/utils";
+import { toQueryString } from "../common/ts/utils";
 
 // index对应json里的歌手分类 -100 热门 1 A ...
 export function getSingerLists(index: string) {
