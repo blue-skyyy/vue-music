@@ -24,7 +24,7 @@
 
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
-import { addClass } from "@/common/js/dom";
+import { addClass } from "@/common/ts/dom";
 import BScroll from "better-scroll";
 @Component({})
 export default class Slider extends Vue {

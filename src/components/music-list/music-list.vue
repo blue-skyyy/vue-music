@@ -6,7 +6,7 @@
  -->
 <template>
   <div class="music-list">
-    <div class="back">
+    <div class="back" @click="back">
       <i class="icon-back"></i>
     </div>
     <h1 class="title"
@@ -14,23 +14,36 @@
     <div class="bg-image"
          :style="bgStyle(bgImage)"
          ref="bgImage">
+         <div class="filter"></div>
     </div>
 
-    <div v-if="songsList.length">
+    <!-- <div v-if="songsList.length">
       <ul v-for="(d, index) in songsList"
           :key="index">
         <li>
           <img :src="d.imgUrl" />
         </li>
       </ul>
-    </div>
+    </div> -->
+    <scroll :data="songsData" class="list" ref="list">
+      <div class="song-list-wrapper">
+        <song-list :list="songsData"></song-list>
+      </div>
+    </scroll>
 
   </div>
 </template>
 
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
-@Component({})
+import SongList from "@/base/songlist/song-list.vue";
+import Scroll from "@/base/scroll/scroll.vue";
+@Component({
+  components: {
+    SongList,
+    Scroll
+  }
+})
 export default class MusicList extends Vue {
   @Prop({
     type: String,
@@ -51,12 +64,22 @@ export default class MusicList extends Vue {
     default: "",
     required: true
   })
-  songsList?: Array<object>;
+  songsData?: Array<object>;
 
   get bgStyle() {
     return function(url: string) {
       return `background-image:url(${url})`;
     };
+  }
+
+  back() {
+    this.$router.push("/singer");
+  }
+
+  mounted() {
+    this.$nextTick(() => {
+      ((this.$refs.list as any).$el as HTMLElement).style.top = `${(this.$refs.bgImage as HTMLElement).clientHeight}px`;
+    });
   }
 }
 </script>
@@ -67,7 +90,7 @@ export default class MusicList extends Vue {
 
 .music-list {
   position: fixed;
-  z-index: 100;
+  z-index: 1000;
   top: 0;
   left: 0;
   bottom: 0;
@@ -163,6 +186,7 @@ export default class MusicList extends Vue {
     bottom: 0;
     width: 100%;
     background: $color-background;
+    overflow: hidden;
 
     .song-list-wrapper {
       padding: 20px 30px;

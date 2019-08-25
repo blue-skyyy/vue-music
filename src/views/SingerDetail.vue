@@ -5,13 +5,13 @@
  * @LastEditTime: 2019-08-23 18:03:21
  -->
 <template>
-  <transition name="slide-enter">
+  <transition name="slide">
 
     <!-- dasda -->
     <!-- <tab></tab> -->
 
     <music-list :singerName="singerName"
-                :songsList="songsList"
+                :songsData="songsList"
                 :bgImage="bgImage"></music-list>
 
   </transition>
@@ -55,6 +55,7 @@ export default class SingerDetail extends Vue {
   public singerName: string = "";
 
   created() {
+    console.log("this.singerInfo", this.singerInfo);
     this._getSingerDetail(this.singerInfo.singer_mid);
     this.bgImage = this.singerInfo.singer_pic;
     this.singerName = this.singerInfo.singer_name;
@@ -77,18 +78,9 @@ export default class SingerDetail extends Vue {
 <style lang="stylus" scoped>
 @import '~common/stylus/variable';
 
-// .singer-detail {
-// position: fixed;
-// z-index: 100;
-// top: 0;
-// left: 0;
-// right: 0;
-// bottom: 0;
-// background: $color-background;
-// color: #FFF;
-// }
+
 .slide-enter-active, .slide-leave-active {
-  transition: all 2s linear;
+  transition: all 0.2s linear;
   transform: translateX(0, 0);
 }
 

@@ -34,11 +34,9 @@ const state: IState = {
 
 const mutations = {
   [types.SET_SINGER](state: any, payload: IPayload) {
-    console.log("singerInfo", payload);
     state.singer = payload;
   },
   [types.TESTAAA](state: any, payload: IPayload) {
-    console.log('YSS', payload);
   }
 }
 

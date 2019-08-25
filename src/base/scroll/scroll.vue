@@ -11,14 +11,20 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Watch } from "vue-property-decorator";
+import { Vue, Component, Watch, Prop } from "vue-property-decorator";
 import BScroll from "better-scroll";
 @Component({})
 export default class Scroll extends Vue {
   private probeType: number = 1;
   private click: boolean = true;
-  private data: any = null;
   private scroll: any = null;
+
+  @Prop({
+    type: Array,
+    default: () => ([]),
+    required: false
+  })
+  data?: any;
 
   mounted() {
     setTimeout(() => {
