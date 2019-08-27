@@ -2,7 +2,7 @@
  * @Author: hpw
  * @Date: 2019-08-19 18:43:36
  * @LastEditors: hpw
- * @LastEditTime: 2019-08-21 17:26:30
+ * @LastEditTime: 2019-08-27 17:23:44
  */
 
 export function addClass(el: Element, className: string): void {
@@ -31,4 +31,37 @@ export function removeClass(el: Element, className: string) {
   });
   newClass.splice(index, 1);   // 删除索引中的这项
   el.className = newClass.join(" ");  // 将class数组以空格为连接符连接成class字符串
+}
+
+interface ITransformNames {
+  [key: string]: string,
+}
+
+let vendor = (() => {
+  let element = document.createElement("div") as any;
+  let transformNames: ITransformNames = {
+    "webkit": "webkitTransform",
+    "Moz": "MozTransform",
+    "O": "OTransform",
+    "ms": "msTransform",
+    "standard": "transform"
+  };
+  for (let key in transformNames) {
+    if (element.style[transformNames[key]] !== undefined) {
+      return key;
+    }
+  }
+  return false;
+})();
+
+export function prefixStyle(style: string) {
+  if (vendor === false) {
+    return false;
+  }
+
+  if (vendor === "standard") {
+    return style;
+  }
+
+  return vendor + style.charAt(0).toUpperCase() + style.substring(1);
 }

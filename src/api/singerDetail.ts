@@ -2,7 +2,7 @@
  * @Author: hpw
  * @Date: 2019-08-22 16:18:27
  * @LastEditors: hpw
- * @LastEditTime: 2019-08-23 17:54:32
+ * @LastEditTime: 2019-08-27 15:18:03
  */
 // URI
 // https://u.y.qq.com/cgi-bin/musicu.fcg?
@@ -56,7 +56,7 @@ export function getSingerDetail(singeId: string) {
     "platform": "yqq.json",
     "needNewCode": 0
   };
-  let data = `{"comm":{"ct":24,"cv":0},"singer":{"method":"get_singer_detail_info","param":{"sort":5,"singermid":"${singeId}","sin":0,"num":10},"module":"music.web_singer_info_svr"}}`;
+  let data = `{"comm":{"ct":24,"cv":0},"singer":{"method":"get_singer_detail_info","param":{"sort":5,"singermid":"${singeId}","sin":0,"num":20},"module":"music.web_singer_info_svr"}}`;
   return new Promise((resolve, reject) => {
     console.log(`${encodeURI(data)}`);
     axios.get(`/api/singerDetail?${encodeURI(toQueryString(params))}&data=${encodeURI(data)}`).then(res => {

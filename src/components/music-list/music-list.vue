@@ -2,11 +2,12 @@
  * @Author: hpw
  * @Date: 2019-08-23 17:10:26
  * @LastEditors: hpw
- * @LastEditTime: 2019-08-23 18:04:54
+ * @LastEditTime: 2019-08-27 17:47:16
  -->
 <template>
   <div class="music-list">
-    <div class="back" @click="back">
+    <div class="back"
+         @click="back">
       <i class="icon-back"></i>
     </div>
     <h1 class="title"
@@ -14,20 +15,30 @@
     <div class="bg-image"
          :style="bgStyle(bgImage)"
          ref="bgImage">
-         <div class="filter"></div>
+      <div class="play-wrapper">
+        <div ref="playBtn"
+             v-show="songsData.length>0"
+             class="play">
+          <i class="icon-play"></i>
+          <span class="text">随机播放全部</span>
+        </div>
+      </div>
+      <div class="filter"></div>
     </div>
-
-    <!-- <div v-if="songsList.length">
-      <ul v-for="(d, index) in songsList"
-          :key="index">
-        <li>
-          <img :src="d.imgUrl" />
-        </li>
-      </ul>
-    </div> -->
-    <scroll :data="songsData" class="list" ref="list">
+    <div class="bg-layer"
+         ref="layer"></div>
+    <scroll :data="songsData"
+            :probeType="probeType"
+            :listenScroll="listenScroll"
+            @scroll="scroll"
+            class="list"
+            ref="list">
       <div class="song-list-wrapper">
         <song-list :list="songsData"></song-list>
+      </div>
+      <div class="loading-container"
+           v-show="!songsData.length">
+        <loading />
       </div>
     </scroll>
 
@@ -35,16 +46,35 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from "vue-property-decorator";
+import { Vue, Component, Prop, Watch } from "vue-property-decorator";
 import SongList from "@/base/songlist/song-list.vue";
 import Scroll from "@/base/scroll/scroll.vue";
+import { prefixStyle } from "@/common/ts/dom";
+import Loading from "@/base/loading/loading.vue";
+
+interface Position {
+  x: number;
+  y: number;
+}
+
+const TRANS_FORM: any = prefixStyle("transform");
+
 @Component({
   components: {
     SongList,
-    Scroll
+    Scroll,
+    Loading
   }
 })
 export default class MusicList extends Vue {
+  public translateY: number = 0;
+  public imageHeight: number = 0;
+  public minTranslateY: number = 0;
+  public probeType: number = 3;
+  public bgImgHeight: string = "40";
+  scrollY = 0;
+  listenScroll: boolean = true;
+
   @Prop({
     type: String,
     default: " ",
@@ -66,6 +96,16 @@ export default class MusicList extends Vue {
   })
   songsData?: Array<object>;
 
+  mounted() {
+    this.$nextTick(() => {
+      ((this.$refs.list as any).$el as HTMLElement).style.top = `${
+        (this.$refs.bgImage as HTMLElement).clientHeight
+      }px`;
+      this.imageHeight = (this.$refs.bgImage as HTMLElement).clientHeight - 40;
+      this.minTranslateY = -this.imageHeight; // 负值向上
+    });
+  }
+
   get bgStyle() {
     return function(url: string) {
       return `background-image:url(${url})`;
@@ -76,10 +116,40 @@ export default class MusicList extends Vue {
     this.$router.push("/singer");
   }
 
-  mounted() {
-    this.$nextTick(() => {
-      ((this.$refs.list as any).$el as HTMLElement).style.top = `${(this.$refs.bgImage as HTMLElement).clientHeight}px`;
-    });
+  scroll(pos: Position) {
+    this.scrollY = pos.y;
+  }
+
+  @Watch("scrollY")
+  watchScrollY(newY: number) {
+    let zIndex = 0;
+    let scale = 1;
+    /* eslint-disable */
+    let translateY = Math.max(this.minTranslateY, newY);
+    const percent = Math.abs(newY / this.imageHeight); // 很重要！
+    // 向下拖动
+    if (newY > 0) {
+      scale = 1 + percent;
+    }
+    // 控制图片大小
+    if (newY < this.minTranslateY) {
+      zIndex = 10;
+      (this.$refs.bgImage as HTMLElement).style.paddingTop = "0";
+      (this.$refs
+        .bgImage as HTMLElement).style.height = `${this.bgImgHeight}px`;
+      (this.$refs.playBtn as HTMLElement).style.display = "none";
+    } else {
+      (this.$refs.bgImage as HTMLElement).style.paddingTop = "70%";
+      (this.$refs.bgImage as HTMLElement).style.height = "0";
+      (this.$refs.playBtn as HTMLElement).style.display = "block";
+    }
+    /* eslint-disable */
+    (this.$refs.bgImage as HTMLElement).style["zIndex"] = `${zIndex}`;
+    (this.$refs.bgImage as HTMLElement).style[TRANS_FORM] = `scale(${scale})`;
+    // 控制遮罩移动的距离
+    (this.$refs.layer as HTMLElement).style[
+      TRANS_FORM
+    ] = `translate(0,${translateY}px)`;
   }
 }
 </script>
@@ -129,8 +199,8 @@ export default class MusicList extends Vue {
     width: 100%;
     height: 0;
     padding-top: 70%;
-    transform-origin: top;
     background-size: cover;
+    background-repeat: no-repeat;
 
     .play-wrapper {
       position: absolute;
@@ -177,6 +247,7 @@ export default class MusicList extends Vue {
   .bg-layer {
     position: relative;
     height: 100%;
+    // background: red;
     background: $color-background;
   }
 
@@ -186,8 +257,8 @@ export default class MusicList extends Vue {
     bottom: 0;
     width: 100%;
     background: $color-background;
-    overflow: hidden;
 
+    // overflow: hidden;
     .song-list-wrapper {
       padding: 20px 30px;
     }

@@ -2,7 +2,7 @@
  * @Author: haopeiwei
  * @Date: 2019-08-19 13:58:11
  * @LastEditors: hpw
- * @LastEditTime: 2019-08-23 17:23:30
+ * @LastEditTime: 2019-08-27 15:16:18
  -->
 <template>
   <div class="singer"
@@ -54,7 +54,7 @@ export default class Singer extends Vue {
   _getSingerLists(index: any) {
     getSingerLists(index).then((res: any) => {
       if (res.code === 0) {
-        this.singerList = res.singerList.data.singerlist.slice(0, 15);
+        this.singerList = res.singerList.data.singerlist.slice(0, 20);
         this._getTitleName(index);
         this.titleIndex = index;
       }
