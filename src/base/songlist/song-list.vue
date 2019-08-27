@@ -30,7 +30,7 @@ export default class List extends Vue {
 
   get getDesc() {
     return function(d: any) {
-      return `${d.singerName}-${d.albumName}`;
+      return `${d.singerName}|${d.albumName}`;
     };
   }
 }
