@@ -2,7 +2,7 @@
  * @Author: hpw
  * @Date: 2019-08-23 17:10:26
  * @LastEditors: hpw
- * @LastEditTime: 2019-08-27 17:47:16
+ * @LastEditTime: 2019-08-28 16:37:21
  -->
 <template>
   <div class="music-list">
@@ -34,7 +34,8 @@
             class="list"
             ref="list">
       <div class="song-list-wrapper">
-        <song-list :list="songsData"></song-list>
+        <song-list :list="songsData"
+                   @select="selectItem"></song-list>
       </div>
       <div class="loading-container"
            v-show="!songsData.length">
@@ -51,7 +52,8 @@ import SongList from "@/base/songlist/song-list.vue";
 import Scroll from "@/base/scroll/scroll.vue";
 import { prefixStyle } from "@/common/ts/dom";
 import Loading from "@/base/loading/loading.vue";
-
+import { Action } from "vuex-class";
+const namespace: string = "player";
 interface Position {
   x: number;
   y: number;
@@ -96,6 +98,8 @@ export default class MusicList extends Vue {
   })
   songsData?: Array<object>;
 
+  @Action("selectPlay", { namespace }) selectPlay: Function | any;
+
   mounted() {
     this.$nextTick(() => {
       ((this.$refs.list as any).$el as HTMLElement).style.top = `${
@@ -118,6 +122,13 @@ export default class MusicList extends Vue {
 
   scroll(pos: Position) {
     this.scrollY = pos.y;
+  }
+
+  selectItem(item: any, index: number) {
+    this.selectPlay({
+      list: this.songsData,
+      index: index
+    });
   }
 
   @Watch("scrollY")

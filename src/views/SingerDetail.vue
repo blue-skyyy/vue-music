@@ -2,7 +2,7 @@
  * @Author: hpw
  * @Date: 2019-08-22 16:00:39
  * @LastEditors: hpw
- * @LastEditTime: 2019-08-23 18:03:21
+ * @LastEditTime: 2019-08-28 16:56:14
  -->
 <template>
   <transition name="slide">
@@ -55,7 +55,6 @@ export default class SingerDetail extends Vue {
   public singerName: string = "";
 
   created() {
-    console.log("this.singerInfo", this.singerInfo);
     this._getSingerDetail(this.singerInfo.singer_mid);
     this.bgImage = this.singerInfo.singer_pic;
     this.singerName = this.singerInfo.singer_name;
@@ -64,12 +63,10 @@ export default class SingerDetail extends Vue {
   _getSingerDetail(id: string) {
     if (!id) this.$router.push("/singer");
     getSingerDetail(id).then((res: any) => {
-      console.log("歌手详情页面", res);
       if (res.code === 0) {
         this.songsList = res.singer.data.songlist.map((d: any) =>
           createSong(d)
         );
-        console.log(" this.songList", this.songsList);
       }
     });
   }
@@ -77,7 +74,6 @@ export default class SingerDetail extends Vue {
 </script>
 <style lang="stylus" scoped>
 @import '~common/stylus/variable';
-
 
 .slide-enter-active, .slide-leave-active {
   transition: all 0.2s linear;
