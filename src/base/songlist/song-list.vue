@@ -2,14 +2,14 @@
  * @Author: hpw
  * @Date: 2019-08-19 16:40:59
  * @LastEditors: hpw
- * @LastEditTime: 2019-08-28 16:34:13
+ * @LastEditTime: 2019-08-29 15:25:30
  -->
 <template>
   <div class="song-list">
     <ul>
       <li v-for="(d, index) in list"
           :key="index"
-          @click="selectItem(d, index)"
+          @click="selectItem(d, d.songMid, index)"
           class="item">
         <div class="content">
           <h2 class="name">{{d.songName}}</h2>
@@ -37,8 +37,8 @@ export default class List extends Vue {
     };
   }
 
-  selectItem(item: any, index: number) {
-    this.$emit("select", item, index);
+  selectItem(item: any, mid: string, index: number) {
+    this.$emit("select", item, mid, index);
   }
 }
 </script>

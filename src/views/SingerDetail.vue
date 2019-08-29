@@ -2,7 +2,7 @@
  * @Author: hpw
  * @Date: 2019-08-22 16:00:39
  * @LastEditors: hpw
- * @LastEditTime: 2019-08-28 16:56:14
+ * @LastEditTime: 2019-08-29 15:24:02
  -->
 <template>
   <transition name="slide">
@@ -67,6 +67,7 @@ export default class SingerDetail extends Vue {
         this.songsList = res.singer.data.songlist.map((d: any) =>
           createSong(d)
         );
+        console.log(" this.songsList ", this.songsList);
       }
     });
   }

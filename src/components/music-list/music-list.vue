@@ -2,7 +2,7 @@
  * @Author: hpw
  * @Date: 2019-08-23 17:10:26
  * @LastEditors: hpw
- * @LastEditTime: 2019-08-28 16:37:21
+ * @LastEditTime: 2019-08-29 15:24:57
  -->
 <template>
   <div class="music-list">
@@ -124,9 +124,10 @@ export default class MusicList extends Vue {
     this.scrollY = pos.y;
   }
 
-  selectItem(item: any, index: number) {
+  selectItem(item: any, mid: string, index: number) {
     this.selectPlay({
       list: this.songsData,
+      midId: mid,
       index: index
     });
   }

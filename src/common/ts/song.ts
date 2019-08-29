@@ -2,7 +2,7 @@
  * @Author: hpw
  * @Date: 2019-08-23 16:44:25
  * @LastEditors: hpw
- * @LastEditTime: 2019-08-23 18:05:39
+ * @LastEditTime: 2019-08-29 15:22:36
  */
 export function createSong(songInfo: any) {
   return {
@@ -11,7 +11,8 @@ export function createSong(songInfo: any) {
     singerName: makeSongName(songInfo.singer),
     songName: songInfo.name,
     duration: songInfo.interval,
-    albumName: songInfo.album.name
+    albumName: songInfo.album.name,
+    songMid: songInfo.mid
   };
 }
 

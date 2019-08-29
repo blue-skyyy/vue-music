@@ -2,7 +2,7 @@
  * @Author: haopeiwei
  * @Date: 2019-08-18 14:39:26
  * @LastEditors: hpw
- * @LastEditTime: 2019-08-22 20:10:48
+ * @LastEditTime: 2019-08-29 14:37:33
  */
 const path = require("path");
 
@@ -32,6 +32,12 @@ module.exports = {
         changeOrigin: true,
         https: true,
         pathRewrite: { "^/api/singerDetail": "" }
+      },
+      "/api/songKey": {
+        target: "https://u.y.qq.com/cgi-bin/musicu.fcg",
+        changeOrigin: true,
+        https: true,
+        pathRewrite: { "^/api/songKey": "" }
       }
     }
   },

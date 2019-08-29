@@ -2,7 +2,7 @@
  * @Author: haopeiwei
  * @Date: 2019-08-19 13:58:11
  * @LastEditors: hpw
- * @LastEditTime: 2019-08-27 15:16:18
+ * @LastEditTime: 2019-08-29 15:23:01
  -->
 <template>
   <div class="singer"

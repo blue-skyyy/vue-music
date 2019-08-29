@@ -2,7 +2,7 @@
  * @Author: hpw
  * @Date: 2019-08-23 10:46:01
  * @LastEditors: hpw
- * @LastEditTime: 2019-08-28 16:58:19
+ * @LastEditTime: 2019-08-29 15:21:57
  */
 import * as types from "./mutation-types";
 
@@ -18,6 +18,7 @@ interface IState {
   sequenceList: Array<object>, // 顺序列表
   playMode: number, // 0顺序 1循环 2随机
   currentIndex: number, // 当前播放顺序
+  songMidId: number,
 }
 
 const namespaced: boolean = true;
@@ -32,7 +33,8 @@ const state: IState = {
   playList: [], // 播放列表
   sequenceList: [], // 顺序列表
   playMode: 0, // 0顺序 1循环 2随机
-  currentIndex: -1 // 当前播放顺序
+  currentIndex: -1, // 当前播放顺序
+  songMidId: -1 // 歌曲id 用于获取歌曲播放地址
 };
 
 const mutations = {
@@ -54,6 +56,9 @@ const mutations = {
   },
   [types.SET_PLAYLIST](state: IState, list: Array<object>) {
     state.playList = list;
+  },
+  [types.SET_SONG_MID_ID](state: IState, id: number) {
+    state.songMidId = id;
   }
 };
 
@@ -64,6 +69,7 @@ const getters = {
   sequenceList: (state: IState) => state.sequenceList,
   playMode: (state: IState) => state.playMode,
   currentIndex: (state: IState) => state.currentIndex,
+  songMidId: (stateL: IState) => state.songMidId,
   currentSong: (state: IState) => {
     console.log("state.playList[state.currentIndex] || {}", state.playList[state.currentIndex] || {});
     return state.playList[state.currentIndex] || {};
@@ -72,12 +78,13 @@ const getters = {
 
 // 第一个参数是rootState
 const actions: ActionTree<IState, any> = {
-  selectPlay({ commit }, { list, index }) {
+  selectPlay({ commit }, { list, midId, index }) {
     commit(types.SET_SEQUENCELIST, list);
     commit(types.SET_FULL_SCREEN, true);
     commit(types.SET_CURRENTINDEX, index);
     commit(types.SET_PLAYING_STATE, true);
     commit(types.SET_PLAYLIST, list);
+    commit(types.SET_SONG_MID_ID, midId);
   }
 };
 

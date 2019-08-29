@@ -2,7 +2,7 @@
  * @Author: haopeiwei
  * @Date: 2019-08-19 13:58:11
  * @LastEditors: hpw
- * @LastEditTime: 2019-08-28 17:37:07
+ * @LastEditTime: 2019-08-29 15:40:07
  -->
 <template>
   <div class="player"
@@ -82,8 +82,9 @@
   </div>
 </template>
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue, Watch } from "vue-property-decorator";
 import { Getter, Mutation } from "vuex-class";
+import { getSong } from "@/api/song";
 
 const namespace: string = "player";
 @Component({})
@@ -91,11 +92,22 @@ export default class Player extends Vue {
   @Getter("fullScreen", { namespace }) fullScreen: boolean | undefined;
   @Getter("playList", { namespace }) playList: Array<object> | undefined;
   @Getter("currentSong", { namespace }) currentSong: object | undefined;
+  @Getter("songMidId", { namespace }) songMidId: string | undefined;
 
   @Mutation("SET_FULL_SCREEN", { namespace }) setFullScreen: Function | any;
 
   changeScreenStatus(flag: boolean) {
     this.setFullScreen(flag);
+  }
+
+  @Watch("songMidId")
+  wacthMidId() {
+    if (this.songMidId) {
+      getSong(this.songMidId).then(res => {
+        console.log("res", res);
+      });
+      console.log("songMidId", this.songMidId);
+    }
   }
 }
 </script>
