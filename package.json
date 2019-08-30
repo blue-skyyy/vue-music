@@ -9,8 +9,11 @@
   },
   "dependencies": {
     "@types/better-scroll": "^1.12.1",
+    "@types/js-base64": "^2.3.1",
     "axios": "^0.19.0",
     "core-js": "^2.6.5",
+    "express": "^4.17.1",
+    "js-base64": "^2.5.1",
     "jsonp": "^0.2.1",
     "vue": "^2.6.10",
     "vue-class-component": "^7.0.2",

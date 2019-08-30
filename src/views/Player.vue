@@ -2,7 +2,7 @@
  * @Author: haopeiwei
  * @Date: 2019-08-19 13:58:11
  * @LastEditors: hpw
- * @LastEditTime: 2019-08-29 15:40:07
+ * @LastEditTime: 2019-08-30 20:16:50
  -->
 <template>
   <div class="player"
@@ -28,7 +28,8 @@
         <div class="middle">
           <div class="middle-l">
             <div class="cd-wrapper">
-              <div class="cd">
+              <div class="cd"
+                   :class="cdClass">
                 <img class="image"
                      :src="currentSong.imgUrl" />
               </div>
@@ -41,13 +42,16 @@
               <i class="icon-sequence"></i>
             </div>
             <div class="icon i-left">
-              <i class="icon-prev"></i>
+              <i @click="prev"
+                 class="icon-prev"></i>
             </div>
             <div class="icon i-center">
-              <i class="icon-play"></i>
+              <i :class="iconPlay"
+                 @click="togglePlaying"></i>
             </div>
             <div class="icon i-right">
-              <i class="icon-next"></i>
+              <i @click="next"
+                 class="icon-next"></i>
             </div>
             <div class="icon i-right">
               <i class="icon icon-not-favorite"></i>
@@ -73,41 +77,106 @@
           </h2>
           <p class="desc">{{currentSong.singerName}}</p>
         </div>
-        <div class="control"></div>
+        <div class="control">
+          <i @click.stop="togglePlaying"
+             :class="miniIconPlay"></i>
+        </div>
         <div class="control">
           <i class="icon-playlist"></i>
         </div>
       </div>
     </transition>
+    <audio :src="songUrl"
+           ref="audio"></audio>
   </div>
 </template>
 <script lang="ts">
 import { Component, Vue, Watch } from "vue-property-decorator";
 import { Getter, Mutation } from "vuex-class";
-import { getSong } from "@/api/song";
+import { getSongUrl, getSonglyric } from "@/api/song";
 
 const namespace: string = "player";
 @Component({})
 export default class Player extends Vue {
+  public songUrl: any = "";
   @Getter("fullScreen", { namespace }) fullScreen: boolean | undefined;
-  @Getter("playList", { namespace }) playList: Array<object> | undefined;
+  @Getter("playList", { namespace }) playList?: Array<object>;
   @Getter("currentSong", { namespace }) currentSong: object | undefined;
   @Getter("songMidId", { namespace }) songMidId: string | undefined;
+  @Getter("playing", { namespace }) playing: string | undefined;
+  @Getter("currentIndex", { namespace }) currentIndex?: number;
 
   @Mutation("SET_FULL_SCREEN", { namespace }) setFullScreen: Function | any;
+
+  @Mutation("SET_PLAYING_STATE", { namespace }) changePlayingState:
+    | Function
+    | any;
+
+  @Mutation("SET_CURRENTINDEX", { namespace }) setCurrentIndex: Function | any;
 
   changeScreenStatus(flag: boolean) {
     this.setFullScreen(flag);
   }
 
+  togglePlaying() {
+    this.changePlayingState(!this.playing);
+  }
+
+  get cdClass() {
+    return this.playing ? "play" : "play pause";
+  }
+  get iconPlay() {
+    return this.playing ? "icon-pause" : "icon-play";
+  }
+  get miniIconPlay() {
+    return this.playing ? "icon-pause-mini" : "icon-play-mini";
+  }
+
+  prev() {
+    let index = (this.currentIndex as number) - 1;
+    if (index === -1) {
+      index = (this.playList as Array<object>).length - 1;
+    }
+    this.setCurrentIndex(index);
+    if (!this.playing) {
+      this.togglePlaying();
+    }
+  }
+
+  next() {
+    let index = (this.currentIndex as number) + 1;
+    if (index === (this.playList as Array<object>).length) {
+      index = 0;
+    }
+    this.setCurrentIndex(index);
+    if (!this.playing) {
+      this.togglePlaying();
+    }
+  }
+
   @Watch("songMidId")
   wacthMidId() {
     if (this.songMidId) {
-      getSong(this.songMidId).then(res => {
-        console.log("res", res);
+      getSongUrl(this.songMidId).then(res => {
+        console.log("resA", res);
+        this.songUrl = res;
+        this.$nextTick(() => {
+          (this.$refs.audio as any).play();
+        });
       });
-      console.log("songMidId", this.songMidId);
+      // getSonglyric(this.songMidId).then(res => {
+      //   console.log("resB", res);
+      // });
+      // console.log("songMidId", this.songMidId);
     }
+  }
+
+  @Watch("playing")
+  watchPlaying(newState: boolean) {
+    this.$nextTick(() => {
+      let audio = this.$refs.audio as any;
+      newState ? audio.play() : audio.pause();
+    });
   }
 }
 </script>

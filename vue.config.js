@@ -2,9 +2,17 @@
  * @Author: haopeiwei
  * @Date: 2019-08-18 14:39:26
  * @LastEditors: hpw
- * @LastEditTime: 2019-08-29 14:37:33
+ * @LastEditTime: 2019-08-30 15:50:26
  */
 const path = require("path");
+const express = require("express");
+const axios = require("axios");
+
+const app = express();
+const apiRoutes = express.Router();
+
+apiRoutes.get("/api/songLyric");
+app.use("/api/songLyric", apiRoutes);
 
 function resolve (dir) {
   return path.join(__dirname, dir);
@@ -12,9 +20,31 @@ function resolve (dir) {
 
 module.exports = {
   devServer: {
+    before (apiRoutes) {
+      apiRoutes.get("/api/songLyric", (req, res) => {
+        console.log("req.query", req.query);
+        let url = "https://c.y.qq.com/lyric/fcgi-bin/fcg_query_lyric_new.fcg";
+        axios.get(url, {
+          headers: {
+            // referer: "https://y.qq.com/portal/player.html",
+            "Accept": "application/json, text/javascript",
+            "Referer": "https://y.qq.com/portal/player.html",
+            "Sec-Fetch-Mode": "cors"
+          },
+          params: req.query
+        }).then((resopnse) => {
+          let ret = resopnse.data;
+          res.json(ret);
+          console.log("resopnse", ret);
+        }).catch(err => {
+          console.log("歌词", err);
+        });
+      });
+    },
     port: 8091,
     open: true,
     proxy: {
+
       "/api/songList": {
         target: "https://u.y.qq.com/cgi-bin/musicu.fcg",
         changeOrigin: true,
@@ -33,12 +63,19 @@ module.exports = {
         https: true,
         pathRewrite: { "^/api/singerDetail": "" }
       },
-      "/api/songKey": {
+      "/api/songUrl": {
         target: "https://u.y.qq.com/cgi-bin/musicu.fcg",
         changeOrigin: true,
         https: true,
-        pathRewrite: { "^/api/songKey": "" }
+        pathRewrite: { "^/api/songUrl": "" }
       }
+      // "/api/songLyric": {
+      //   target: "https://c.y.qq.com/lyric/fcgi-bin/fcg_query_lyric_new.fcg",
+      //   changeOrigin: true,
+      //   https: true,
+      //   pathRewrite: { "^/api/songLyric": "" }
+      // }
+      // "/api/"
     }
   },
   lintOnSave: true,
