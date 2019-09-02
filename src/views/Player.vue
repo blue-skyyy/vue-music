@@ -2,7 +2,7 @@
  * @Author: haopeiwei
  * @Date: 2019-08-19 13:58:11
  * @LastEditors: hpw
- * @LastEditTime: 2019-08-30 20:16:50
+ * @LastEditTime: 2019-09-02 17:06:51
  -->
 <template>
   <div class="player"
@@ -37,6 +37,18 @@
           </div>
         </div>
         <div class="bottom">
+          <div class="dot-wrapper">
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+          <div class="progress-wrapper">
+            <span class="time time-l">{{format(songUpDateTime)}}</span>
+            <div class="progress-bar-wrapper">
+              <progress-bar @percentChange="percentChange"
+                            :percent="percent"></progress-bar>
+            </div>
+            <span class="time time-r">{{format(currentSong.duration)}}</span>
+          </div>
           <div class="operators">
             <div class="icon i-left">
               <i class="icon-sequence"></i>
@@ -87,6 +99,7 @@
       </div>
     </transition>
     <audio :src="songUrl"
+           @timeupdate="timeupdate"
            ref="audio"></audio>
   </div>
 </template>
@@ -94,25 +107,44 @@
 import { Component, Vue, Watch } from "vue-property-decorator";
 import { Getter, Mutation } from "vuex-class";
 import { getSongUrl, getSonglyric } from "@/api/song";
+import ProgressBar from "@/base/progress-bar/progress-bar.vue";
+interface ISongState {
+  imgUrl: string;
+  singerName: string;
+  songName: string;
+  duration: number;
+  albumName: string;
+  songMid: string;
+}
 
 const namespace: string = "player";
-@Component({})
+@Component({
+  components: {
+    ProgressBar
+  }
+})
 export default class Player extends Vue {
   public songUrl: any = "";
-  @Getter("fullScreen", { namespace }) fullScreen: boolean | undefined;
-  @Getter("playList", { namespace }) playList?: Array<object>;
-  @Getter("currentSong", { namespace }) currentSong: object | undefined;
-  @Getter("songMidId", { namespace }) songMidId: string | undefined;
-  @Getter("playing", { namespace }) playing: string | undefined;
-  @Getter("currentIndex", { namespace }) currentIndex?: number;
+  public songUpDateTime: any = null;
+  @Getter("fullScreen", { namespace }) fullScreen!: boolean;
+  @Getter("playList", { namespace }) playList!: Array<ISongState>;
+  @Getter("currentSong", { namespace }) currentSong!: ISongState;
+  @Getter("songMidId", { namespace }) songMidId!: string;
+  @Getter("playing", { namespace }) playing!: string;
+  @Getter("currentIndex", { namespace }) currentIndex!: number;
 
   @Mutation("SET_FULL_SCREEN", { namespace }) setFullScreen: Function | any;
+  @Mutation("SET_SONG_MID_ID", { namespace }) setSongMidId!: Function;
 
   @Mutation("SET_PLAYING_STATE", { namespace }) changePlayingState:
     | Function
     | any;
 
   @Mutation("SET_CURRENTINDEX", { namespace }) setCurrentIndex: Function | any;
+
+  $refs!: {
+    audio: HTMLAudioElement;
+  };
 
   changeScreenStatus(flag: boolean) {
     this.setFullScreen(flag);
@@ -122,22 +154,13 @@ export default class Player extends Vue {
     this.changePlayingState(!this.playing);
   }
 
-  get cdClass() {
-    return this.playing ? "play" : "play pause";
-  }
-  get iconPlay() {
-    return this.playing ? "icon-pause" : "icon-play";
-  }
-  get miniIconPlay() {
-    return this.playing ? "icon-pause-mini" : "icon-play-mini";
-  }
-
   prev() {
     let index = (this.currentIndex as number) - 1;
     if (index === -1) {
       index = (this.playList as Array<object>).length - 1;
     }
     this.setCurrentIndex(index);
+    this.setSongMidId(this.playList[index].songMid);
     if (!this.playing) {
       this.togglePlaying();
     }
@@ -149,25 +172,72 @@ export default class Player extends Vue {
       index = 0;
     }
     this.setCurrentIndex(index);
+    this.setSongMidId(this.playList[index].songMid);
     if (!this.playing) {
       this.togglePlaying();
     }
   }
 
+  timeupdate(e: Event) {
+    this.songUpDateTime = (e.target as any).currentTime;
+  }
+
+  format(interval = 0): string {
+    // 分
+    let minute: any = interval / 60;
+    let minutes: string | number = parseInt(minute);
+    if (minutes < 10) {
+      minutes = "0" + minutes;
+    }
+    // 秒
+    let second = interval % 60;
+    let seconds: string | number = Math.round(second);
+    if (seconds < 10) {
+      seconds = "0" + seconds;
+    }
+    return `${minutes}:${seconds}`;
+  }
+
+  percentChange(percent: number) {
+    this.$refs.audio.currentTime = this.currentSong.duration * percent;
+    if (!this.playing) {
+      this.togglePlaying();
+    }
+  }
+
+  // format(interval) {
+  //   interval = interval | 0;
+  // }
+
+  get cdClass() {
+    return this.playing ? "play" : "play pause";
+  }
+  get iconPlay() {
+    return this.playing ? "icon-pause" : "icon-play";
+  }
+  get miniIconPlay() {
+    return this.playing ? "icon-pause-mini" : "icon-play-mini";
+  }
+
+  get percent() {
+    return this.songUpDateTime / this.currentSong.duration;
+  }
+
   @Watch("songMidId")
-  wacthMidId() {
+  wacthMidId(newSongMidId: any) {
+    const that = this;
     if (this.songMidId) {
-      getSongUrl(this.songMidId).then(res => {
-        console.log("resA", res);
-        this.songUrl = res;
-        this.$nextTick(() => {
-          (this.$refs.audio as any).play();
+      Promise.all([getSongUrl(this.songMidId), getSonglyric(this.songMidId)])
+        .then(([url, lyric]) => {
+          // 一定要先把url加载 再获取dom
+          that.songUrl = url;
+          that.$nextTick(() => {
+            (that.$refs.audio as any).play();
+          });
+        })
+        .catch(err => {
+          throw new Error("不存在歌曲地址或歌词" + err);
         });
-      });
-      // getSonglyric(this.songMidId).then(res => {
-      //   console.log("resB", res);
-      // });
-      // console.log("songMidId", this.songMidId);
     }
   }
 
@@ -375,10 +445,12 @@ export default class Player extends Vue {
 
           &.time-l {
             text-align: left;
+            margin-right: 5px;
           }
 
           &.time-r {
             text-align: right;
+            margin-left: 5px;
           }
         }
 

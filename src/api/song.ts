@@ -2,7 +2,7 @@
  * @Author: hpw
  * @Date: 2019-08-19 14:37:08
  * @LastEditors: hpw
- * @LastEditTime: 2019-08-30 16:06:40
+ * @LastEditTime: 2019-09-02 11:26:39
  */
 import axios from "axios";
 import { toQueryString } from "../common/ts/utils";
@@ -63,10 +63,11 @@ export function getSonglyric(songmid: string) {
   // console.log("请求参数", `/api/songLyric?${encodeURI(toQueryString(params))}`);
   return axios.get("/api/songLyric", {
     params
-  }).then((res: any) => {
+  }).then(res => {
     console.log("歌词返回", res);
     if (res.data.code === 0) {
       return Promise.resolve(Base64.decode(res.data.lyric));
     }
+    return Promise.reject(new Error("获取歌词错误"));
   });
 }

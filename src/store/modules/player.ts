@@ -2,7 +2,7 @@
  * @Author: hpw
  * @Date: 2019-08-23 10:46:01
  * @LastEditors: hpw
- * @LastEditTime: 2019-08-30 20:01:40
+ * @LastEditTime: 2019-09-02 10:17:31
  */
 import * as types from "./mutation-types";
 
@@ -71,7 +71,6 @@ const getters = {
   currentIndex: (state: IState) => state.currentIndex,
   songMidId: (state: IState) => state.songMidId,
   currentSong: (state: IState) => {
-    console.log("state.playList[state.currentIndex] || {}", state.playList[state.currentIndex] || {});
     return state.playList[state.currentIndex] || {};
   }
 };

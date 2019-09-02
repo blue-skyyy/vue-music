@@ -2,7 +2,7 @@
  * @Author: haopeiwei
  * @Date: 2019-08-18 14:39:26
  * @LastEditors: hpw
- * @LastEditTime: 2019-08-30 15:50:26
+ * @LastEditTime: 2019-09-02 11:14:45
  */
 const path = require("path");
 const express = require("express");
@@ -35,9 +35,8 @@ module.exports = {
         }).then((resopnse) => {
           let ret = resopnse.data;
           res.json(ret);
-          console.log("resopnse", ret);
         }).catch(err => {
-          console.log("歌词", err);
+          console.log("歌词获取", err);
         });
       });
     },
