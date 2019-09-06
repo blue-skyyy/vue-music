@@ -1,10 +1,3 @@
-/*
- * @Author: hpw
- * @Date: 2019-08-20 16:46:33
- * @LastEditors: hpw
- * @LastEditTime: 2019-08-21 10:46:35
- */
-
 export function toQueryString(obj: any): any {
   function toQueryPair(key: any, value: any) {
     if (typeof value === "undefined") {
@@ -30,4 +23,19 @@ export function toQueryString(obj: any): any {
   }
 
   return ret.join("&");
+}
+
+function randomInt(min: number, max: number) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+export function shuffle(arr: Array<object>) {
+  const newArr = arr.slice();
+  for (let i = 0; i < newArr.length; i++) {
+    let r = randomInt(0, i);
+    let t = newArr[i];
+    newArr[i] = newArr[r];
+    newArr[r] = t;
+  }
+  return newArr;
 }

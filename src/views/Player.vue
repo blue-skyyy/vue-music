@@ -1,9 +1,3 @@
-<!--
- * @Author: haopeiwei
- * @Date: 2019-08-19 13:58:11
- * @LastEditors: hpw
- * @LastEditTime: 2019-09-02 17:06:51
- -->
 <template>
   <div class="player"
        v-show="playList && playList.length > 0">
@@ -49,9 +43,11 @@
             </div>
             <span class="time time-r">{{format(currentSong.duration)}}</span>
           </div>
+
           <div class="operators">
             <div class="icon i-left">
-              <i class="icon-sequence"></i>
+              <i :class="iconMode"
+                 @click="changePlayMode"></i>
             </div>
             <div class="icon i-left">
               <i @click="prev"
@@ -90,8 +86,13 @@
           <p class="desc">{{currentSong.singerName}}</p>
         </div>
         <div class="control">
-          <i @click.stop="togglePlaying"
-             :class="miniIconPlay"></i>
+          <progress-circle :radius="radius"
+                           :percent="percent">
+            <i @click.stop="togglePlaying"
+               class="icon-mini"
+               :class="miniIconPlay"></i>
+          </progress-circle>
+
         </div>
         <div class="control">
           <i class="icon-playlist"></i>
@@ -100,14 +101,18 @@
     </transition>
     <audio :src="songUrl"
            @timeupdate="timeupdate"
+           @ended="songEnd"
            ref="audio"></audio>
   </div>
 </template>
 <script lang="ts">
 import { Component, Vue, Watch } from "vue-property-decorator";
 import { Getter, Mutation } from "vuex-class";
+import { shuffle } from "@/common/ts/utils";
 import { getSongUrl, getSonglyric } from "@/api/song";
 import ProgressBar from "@/base/progress-bar/progress-bar.vue";
+import ProgressCircle from "@/base/progress-circle/progress-circle.vue";
+import Lyric from "lyric-parser";
 interface ISongState {
   imgUrl: string;
   singerName: string;
@@ -120,21 +125,29 @@ interface ISongState {
 const namespace: string = "player";
 @Component({
   components: {
-    ProgressBar
+    ProgressBar,
+    ProgressCircle
   }
 })
 export default class Player extends Vue {
+  public radius: number = 32;
   public songUrl: any = "";
   public songUpDateTime: any = null;
+  public currentLyric: any;
   @Getter("fullScreen", { namespace }) fullScreen!: boolean;
   @Getter("playList", { namespace }) playList!: Array<ISongState>;
   @Getter("currentSong", { namespace }) currentSong!: ISongState;
   @Getter("songMidId", { namespace }) songMidId!: string;
   @Getter("playing", { namespace }) playing!: string;
   @Getter("currentIndex", { namespace }) currentIndex!: number;
+  @Getter("playMode", { namespace }) playMode!: number;
+  @Getter("sequenceList", { namespace }) sequenceList!: Array<ISongState>;
 
   @Mutation("SET_FULL_SCREEN", { namespace }) setFullScreen: Function | any;
   @Mutation("SET_SONG_MID_ID", { namespace }) setSongMidId!: Function;
+  @Mutation("SET_PLAYLIST", { namespace }) setPlayList!: Function;
+
+  @Mutation("SET_PLAYMODE", { namespace }) setPlayMode!: Function;
 
   @Mutation("SET_PLAYING_STATE", { namespace }) changePlayingState:
     | Function
@@ -146,6 +159,45 @@ export default class Player extends Vue {
     audio: HTMLAudioElement;
   };
 
+  created() {
+    this.$nextTick(() => {
+      this.$refs.audio.currentTime = 0;
+    });
+  }
+
+  changePlayMode() {
+    let mode = (this.playMode + 1) % 3;
+    this.setPlayMode(mode);
+    // 随机
+    let list: ISongState[];
+    if (mode === 2) {
+      list = shuffle(this.playList) as Array<ISongState>;
+    } else {
+      list = this.sequenceList;
+    }
+    this.resetCurrentIndex(list);
+    this.setPlayList(list);
+    //  else {
+    // this.next();
+    // }
+  }
+
+  resetCurrentIndex(list: Array<ISongState>) {
+    let index = list.findIndex((d: ISongState) => {
+      return d.songMid === this.currentSong.songMid;
+    });
+    this.setCurrentIndex(index);
+  }
+
+  songEnd() {
+    // 0顺序 1循环 2随机
+    if (this.playMode === 1) {
+      this.$refs.audio.currentTime = 0;
+      this.$refs.audio.play();
+    } else {
+      this.next();
+    }
+  }
   changeScreenStatus(flag: boolean) {
     this.setFullScreen(flag);
   }
@@ -223,14 +275,28 @@ export default class Player extends Vue {
     return this.songUpDateTime / this.currentSong.duration;
   }
 
+  get iconMode() {
+    /* eslint-disable */
+    return this.playMode === 0
+      ? "icon-sequence"
+      : this.playMode === 1
+      ? "icon-loop"
+      : this.playMode === 2
+      ? "icon-random"
+      : null;
+  }
+
   @Watch("songMidId")
   wacthMidId(newSongMidId: any) {
+    console.log("newSongMidId", newSongMidId);
     const that = this;
     if (this.songMidId) {
       Promise.all([getSongUrl(this.songMidId), getSonglyric(this.songMidId)])
         .then(([url, lyric]) => {
           // 一定要先把url加载 再获取dom
           that.songUrl = url;
+          this.currentLyric = new Lyric(lyric);
+          console.log("this.currentLyric", this.currentLyric);
           that.$nextTick(() => {
             (that.$refs.audio as any).play();
           });

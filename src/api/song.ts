@@ -37,7 +37,6 @@ export function getSongUrl(songmid: string) {
           queryParam = res.data.req.data.keepalivefile;
         }
         resolve(host + queryParam);
-        console.log("歌曲地址", host + queryParam);
       } else {
         reject(res);
       }
@@ -64,7 +63,6 @@ export function getSonglyric(songmid: string) {
   return axios.get("/api/songLyric", {
     params
   }).then(res => {
-    console.log("歌词返回", res);
     if (res.data.code === 0) {
       return Promise.resolve(Base64.decode(res.data.lyric));
     }

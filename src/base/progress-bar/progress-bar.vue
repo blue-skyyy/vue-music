@@ -53,29 +53,21 @@ export default class Progress extends Vue {
     progressBtn: HTMLDivElement;
   };
 
-  progressTouchStart(e: Event) {
-    this.touch.initiated = true;
-    this.touch.startX = (<TouchEvent>e).touches[0].pageX;
-    this.touch.left = this.$refs.progress.clientWidth;
-  }
-
-  clickProgress(e: Event) {
-    const rect = this.$refs.progressBar.getBoundingClientRect();
-    this.setBtnAndProgressAttr((<MouseEvent>e).pageX - rect.left);
-    this.triggerPercent();
-  }
-
   progressTouchMove(e: Event) {
     if (!this.touch.initiated) {
       return;
     }
     const moveX = (<TouchEvent>e).touches[0].pageX - this.touch.startX;
-    // const deltaX = e.touches[0].pageX - this.touch.startX;
     const offsetWidth = Math.min(
       this.$refs.progressBar.clientWidth - PROGRESS_BTN_WIDTH,
       Math.max(0, this.touch.left + moveX)
     );
     this.setBtnAndProgressAttr(offsetWidth);
+  }
+  progressTouchStart(e: Event) {
+    this.touch.initiated = true;
+    this.touch.startX = (<TouchEvent>e).touches[0].pageX;
+    this.touch.left = this.$refs.progress.clientWidth;
   }
 
   progressTouchEnd() {
@@ -92,6 +84,12 @@ export default class Progress extends Vue {
   setBtnAndProgressAttr(width: number) {
     this.$refs.progress.style.width = width + "px";
     this.$refs.progressBtn.style.left = width - PROGRESS_ORIGIN_BTN_LEFT + "px";
+  }
+
+  clickProgress(e: Event) {
+    var rect = this.$refs.progressBar.getBoundingClientRect();
+    this.setBtnAndProgressAttr((<MouseEvent>e).pageX - rect.left);
+    this.triggerPercent();
   }
 
   @Watch("percent")

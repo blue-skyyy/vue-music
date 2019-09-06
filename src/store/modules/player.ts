@@ -6,8 +6,10 @@
  */
 import * as types from "./mutation-types";
 
-import { ActionTree } from "vuex";
 // import { ActionTree } from "vuex";
+import { shuffle } from "@/common/ts/utils";
+/* eslint-disable */
+import { ActionTree } from "vuex";
 
 // import { Commit, Dispatch, GetterTree, ActionTree, MutationTree } from 'vuex';
 
@@ -22,10 +24,6 @@ interface IState {
 }
 
 const namespaced: boolean = true;
-
-interface IPayload {
-  payload: any,
-}
 
 const state: IState = {
   playing: false,  // 是否播放
@@ -75,15 +73,45 @@ const getters = {
   }
 };
 
+interface ISongState {
+  imgUrl: string;
+  singerName: string;
+  songName: string;
+  duration: number;
+  albumName: string;
+  songMid: string;
+}
+function findIndex(list: Array<ISongState>, songMid: string) {
+  return list.findIndex((item) => {
+    return item.songMid === songMid;
+  });
+}
+
 // 第一个参数是rootState
 const actions: ActionTree<IState, any> = {
-  selectPlay({ commit }, { list, midId, index }) {
+  selectPlay({ commit, state }, { list, midId, index }) {
     commit(types.SET_SEQUENCELIST, list);
     commit(types.SET_FULL_SCREEN, true);
-    commit(types.SET_CURRENTINDEX, index);
     commit(types.SET_PLAYING_STATE, true);
-    commit(types.SET_PLAYLIST, list);
     commit(types.SET_SONG_MID_ID, midId);
+    if (state.playMode === 2) {
+      let randomList = shuffle(list) as Array<ISongState>;
+      commit(types.SET_PLAYLIST, randomList);
+      index = findIndex(randomList, midId);
+    } else {
+      commit(types.SET_PLAYLIST, list);
+    }
+    commit(types.SET_CURRENTINDEX, index);
+  },
+  changePlayMode({ commit }, { list }) {
+    commit(types.SET_PLAYMODE, 2);
+    commit(types.SET_SEQUENCELIST, list);
+    let randomList = shuffle(list) as Array<ISongState>;
+    commit(types.SET_PLAYLIST, randomList);
+    commit(types.SET_PLAYING_STATE, true);
+    commit(types.SET_CURRENTINDEX, 0);
+    commit(types.SET_FULL_SCREEN, true);
+    commit(types.SET_SONG_MID_ID, randomList[0].songMid);
   }
 };
 

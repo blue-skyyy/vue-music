@@ -43,7 +43,6 @@ import axios from "axios";
 import { toQueryString } from "../common/ts/utils";
 
 export function getSingerDetail(singeId: string) {
-  console.log("singeId", singeId);
   let params = {
     "-": "getUCGI1381039243187232",
     "g_tk": 1046670221,
@@ -58,7 +57,6 @@ export function getSingerDetail(singeId: string) {
   };
   let data = `{"comm":{"ct":24,"cv":0},"singer":{"method":"get_singer_detail_info","param":{"sort":5,"singermid":"${singeId}","sin":0,"num":20},"module":"music.web_singer_info_svr"}}`;
   return new Promise((resolve, reject) => {
-    console.log(`${encodeURI(data)}`);
     axios.get(`/api/singerDetail?${encodeURI(toQueryString(params))}&data=${encodeURIComponent(data)}`).then(res => {
       if (res.data.code === 0) {
         resolve(res.data);

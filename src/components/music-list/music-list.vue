@@ -18,6 +18,7 @@
       <div class="play-wrapper">
         <div ref="playBtn"
              v-show="songsData.length>0"
+             @click="playMode"
              class="play">
           <i class="icon-play"></i>
           <span class="text">随机播放全部</span>
@@ -99,6 +100,7 @@ export default class MusicList extends Vue {
   songsData?: Array<object>;
 
   @Action("selectPlay", { namespace }) selectPlay: Function | any;
+  @Action("changePlayMode", { namespace }) changePlayMode!: Function;
 
   mounted() {
     this.$nextTick(() => {
@@ -114,6 +116,13 @@ export default class MusicList extends Vue {
     return function(url: string) {
       return `background-image:url(${url})`;
     };
+  }
+
+  playMode() {
+    console.log("this.songsData", this.songsData);
+    this.changePlayMode({
+      list: this.songsData
+    });
   }
 
   back() {

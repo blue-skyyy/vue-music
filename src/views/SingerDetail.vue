@@ -67,7 +67,6 @@ export default class SingerDetail extends Vue {
         this.songsList = res.singer.data.songlist.map((d: any) =>
           createSong(d)
         );
-        console.log(" this.songsList ", this.songsList);
       }
     });
   }
