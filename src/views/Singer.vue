@@ -1,19 +1,17 @@
-<!--
- * @Author: haopeiwei
- * @Date: 2019-08-19 13:58:11
- * @LastEditors: hpw
- * @LastEditTime: 2019-08-29 15:23:01
- -->
 <template>
-  <div class="singer"
-       v-if="singerList.length"
-       ref="singer">
+  <div
+    class="singer"
+    v-if="singerList.length"
+    ref="singer"
+  >
 
-    <list-view :data="singerList"
-               @getSingerLists="_getSingerLists"
-               @selectSingerById="_selectSingerById"
-               :titleIndex="titleIndex"
-               :title="titleName"></list-view>
+    <list-view
+      :data="singerList"
+      @getSingerLists="_getSingerLists"
+      @selectSingerById="_selectSingerById"
+      :titleIndex="titleIndex"
+      :title="titleName"
+    ></list-view>
     <router-view></router-view>
 
   </div>
@@ -44,7 +42,8 @@ export default class Singer extends Vue {
   public titleIndex: string = "-100";
   public titleName: string = " ";
 
-  @Mutation("singer/SET_SINGER") private setSinger: any;
+  @Mutation("singer/SET_SINGER")
+  private setSinger: any;
 
   created() {
     this._getSingerLists(this.titleIndex);

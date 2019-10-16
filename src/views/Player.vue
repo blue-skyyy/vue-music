@@ -1,19 +1,27 @@
 <template>
-  <div class="player"
-       v-show="playList && playList.length > 0">
+  <div
+    class="player"
+    v-show="playList && playList.length > 0"
+  >
     <!-- 大播放器 -->
     <transition name="normal">
 
-      <div class="normal-player"
-           v-show="fullScreen">
+      <div
+        class="normal-player"
+        v-show="fullScreen"
+      >
         <div class="background">
-          <img width="100%"
-               height="100%"
-               :src="currentSong.imgUrl" />
+          <img
+            width="100%"
+            height="100%"
+            :src="currentSong.imgUrl"
+          />
         </div>
         <div class="top">
-          <div class="back"
-               @click="changeScreenStatus(false)">
+          <div
+            class="back"
+            @click="changeScreenStatus(false)"
+          >
             <i class="icon-back"></i>
           </div>
           <h1 class="title">{{currentSong.songName}}</h1>
@@ -22,13 +30,34 @@
         <div class="middle">
           <div class="middle-l">
             <div class="cd-wrapper">
-              <div class="cd"
-                   :class="cdClass">
-                <img class="image"
-                     :src="currentSong.imgUrl" />
+              <div
+                class="cd"
+                :class="cdClass"
+              >
+                <img
+                  class="image"
+                  :src="currentSong.imgUrl"
+                />
               </div>
             </div>
           </div>
+          <div
+            class="middle-r"
+            v-if="currentLyric"
+          >
+            <div class="lyric-wrapper">
+              <div>
+                <p
+                  ref="lyricLine"
+                  class="text"
+                  :class="{'current': currentLineNum ===index}"
+                  :key="index"
+                  v-for="(line,index) in currentLyric.lines"
+                >{{line.txt}}</p>
+              </div>
+            </div>
+          </div>
+
         </div>
         <div class="bottom">
           <div class="dot-wrapper">
@@ -38,28 +67,38 @@
           <div class="progress-wrapper">
             <span class="time time-l">{{format(songUpDateTime)}}</span>
             <div class="progress-bar-wrapper">
-              <progress-bar @percentChange="percentChange"
-                            :percent="percent"></progress-bar>
+              <progress-bar
+                @percentChange="percentChange"
+                :percent="percent"
+              ></progress-bar>
             </div>
             <span class="time time-r">{{format(currentSong.duration)}}</span>
           </div>
 
           <div class="operators">
             <div class="icon i-left">
-              <i :class="iconMode"
-                 @click="changePlayMode"></i>
+              <i
+                :class="iconMode"
+                @click="changePlayMode"
+              ></i>
             </div>
             <div class="icon i-left">
-              <i @click="prev"
-                 class="icon-prev"></i>
+              <i
+                @click="prev"
+                class="icon-prev"
+              ></i>
             </div>
             <div class="icon i-center">
-              <i :class="iconPlay"
-                 @click="togglePlaying"></i>
+              <i
+                :class="iconPlay"
+                @click="togglePlaying"
+              ></i>
             </div>
             <div class="icon i-right">
-              <i @click="next"
-                 class="icon-next"></i>
+              <i
+                @click="next"
+                class="icon-next"
+              ></i>
             </div>
             <div class="icon i-right">
               <i class="icon icon-not-favorite"></i>
@@ -71,13 +110,17 @@
 
     <!-- 小播放器 -->
     <transition name="mini">
-      <div class="mini-player"
-           @click="changeScreenStatus(true)"
-           v-show="!fullScreen">
+      <div
+        class="mini-player"
+        @click="changeScreenStatus(true)"
+        v-show="!fullScreen"
+      >
         <div class="icon">
-          <img width="40"
-               height="40"
-               :src="currentSong.imgUrl" />
+          <img
+            width="40"
+            height="40"
+            :src="currentSong.imgUrl"
+          />
         </div>
         <div class="text">
           <h2 class="name">
@@ -86,11 +129,15 @@
           <p class="desc">{{currentSong.singerName}}</p>
         </div>
         <div class="control">
-          <progress-circle :radius="radius"
-                           :percent="percent">
-            <i @click.stop="togglePlaying"
-               class="icon-mini"
-               :class="miniIconPlay"></i>
+          <progress-circle
+            :radius="radius"
+            :percent="percent"
+          >
+            <i
+              @click.stop="togglePlaying"
+              class="icon-mini"
+              :class="miniIconPlay"
+            ></i>
           </progress-circle>
 
         </div>
@@ -99,10 +146,12 @@
         </div>
       </div>
     </transition>
-    <audio :src="songUrl"
-           @timeupdate="timeupdate"
-           @ended="songEnd"
-           ref="audio"></audio>
+    <audio
+      :src="songUrl"
+      @timeupdate="timeupdate"
+      @ended="songEnd"
+      ref="audio"
+    ></audio>
   </div>
 </template>
 <script lang="ts">
@@ -133,27 +182,40 @@ export default class Player extends Vue {
   public radius: number = 32;
   public songUrl: any = "";
   public songUpDateTime: any = null;
-  public currentLyric: any;
-  @Getter("fullScreen", { namespace }) fullScreen!: boolean;
-  @Getter("playList", { namespace }) playList!: Array<ISongState>;
-  @Getter("currentSong", { namespace }) currentSong!: ISongState;
-  @Getter("songMidId", { namespace }) songMidId!: string;
-  @Getter("playing", { namespace }) playing!: string;
-  @Getter("currentIndex", { namespace }) currentIndex!: number;
-  @Getter("playMode", { namespace }) playMode!: number;
-  @Getter("sequenceList", { namespace }) sequenceList!: Array<ISongState>;
+  public currentLyric: any = null;
+  public currentLineNum: number = 0;
+  @Getter("fullScreen", { namespace })
+  fullScreen!: boolean;
+  @Getter("playList", { namespace })
+  playList!: Array<ISongState>;
+  @Getter("currentSong", { namespace })
+  currentSong!: ISongState;
+  @Getter("songMidId", { namespace })
+  songMidId!: string;
+  @Getter("playing", { namespace })
+  playing!: string;
+  @Getter("currentIndex", { namespace })
+  currentIndex!: number;
+  @Getter("playMode", { namespace })
+  playMode!: number;
+  @Getter("sequenceList", { namespace })
+  sequenceList!: Array<ISongState>;
 
-  @Mutation("SET_FULL_SCREEN", { namespace }) setFullScreen: Function | any;
-  @Mutation("SET_SONG_MID_ID", { namespace }) setSongMidId!: Function;
-  @Mutation("SET_PLAYLIST", { namespace }) setPlayList!: Function;
+  @Mutation("SET_FULL_SCREEN", { namespace })
+  setFullScreen: Function | any;
+  @Mutation("SET_SONG_MID_ID", { namespace })
+  setSongMidId!: Function;
+  @Mutation("SET_PLAYLIST", { namespace })
+  setPlayList!: Function;
 
-  @Mutation("SET_PLAYMODE", { namespace }) setPlayMode!: Function;
+  @Mutation("SET_PLAYMODE", { namespace })
+  setPlayMode!: Function;
 
-  @Mutation("SET_PLAYING_STATE", { namespace }) changePlayingState:
-    | Function
-    | any;
+  @Mutation("SET_PLAYING_STATE", { namespace })
+  changePlayingState: Function | any;
 
-  @Mutation("SET_CURRENTINDEX", { namespace }) setCurrentIndex: Function | any;
+  @Mutation("SET_CURRENTINDEX", { namespace })
+  setCurrentIndex: Function | any;
 
   $refs!: {
     audio: HTMLAudioElement;
@@ -256,10 +318,9 @@ export default class Player extends Vue {
       this.togglePlaying();
     }
   }
-
-  // format(interval) {
-  //   interval = interval | 0;
-  // }
+  handlerLyric({ lineNum }: any) {
+    this.currentLineNum = lineNum;
+  }
 
   get cdClass() {
     return this.playing ? "play" : "play pause";
@@ -280,23 +341,35 @@ export default class Player extends Vue {
     return this.playMode === 0
       ? "icon-sequence"
       : this.playMode === 1
-      ? "icon-loop"
-      : this.playMode === 2
-      ? "icon-random"
-      : null;
+        ? "icon-loop"
+        : this.playMode === 2
+          ? "icon-random"
+          : null;
   }
 
   @Watch("songMidId")
   wacthMidId(newSongMidId: any) {
-    console.log("newSongMidId", newSongMidId);
     const that = this;
     if (this.songMidId) {
       Promise.all([getSongUrl(this.songMidId), getSonglyric(this.songMidId)])
         .then(([url, lyric]) => {
           // 一定要先把url加载 再获取dom
           that.songUrl = url;
-          this.currentLyric = new Lyric(lyric);
-          console.log("this.currentLyric", this.currentLyric);
+          this.currentLyric = new Lyric(lyric, this.handlerLyric);
+          // setTimeout
+          // this.lyric = setTimeout(() => {
+
+          // })
+          // this.handlerLyric(10);
+          // this.currentLyric.handlder(this.currentLyric.curNum);
+          if (this.playing) {
+            this.currentLyric.play();
+            // this.handlerLyric(this.currentLyric);
+            // this.currentLyric.handler()
+            // this.currentLyric.handler({ lineNum });
+            console.log("currentLyric", this.currentLyric);
+            // this.handlerLyric(this.currentLyric, this.currentLineNum);
+          }
           that.$nextTick(() => {
             (that.$refs.audio as any).play();
           });
@@ -394,6 +467,7 @@ export default class Player extends Vue {
         width: 100%;
         height: 0;
         padding-top: 80%;
+        display: none;
 
         .cd-wrapper {
           position: absolute;
