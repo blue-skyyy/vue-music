@@ -14,15 +14,14 @@ const apiRoutes = express.Router();
 apiRoutes.get("/api/songLyric");
 app.use("/api/songLyric", apiRoutes);
 
-function resolve (dir) {
+function resolve(dir) {
   return path.join(__dirname, dir);
 }
 
 module.exports = {
   devServer: {
-    before (apiRoutes) {
+    before(apiRoutes) {
       apiRoutes.get("/api/songLyric", (req, res) => {
-        console.log("req.query", req.query);
         let url = "https://c.y.qq.com/lyric/fcgi-bin/fcg_query_lyric_new.fcg";
         axios.get(url, {
           headers: {

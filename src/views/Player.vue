@@ -41,24 +41,26 @@
               </div>
             </div>
           </div>
-          <div
+          <Scroll
             class="middle-r"
-            v-if="currentLyric"
+            ref="lyricList"
+            :data="currentLyric && currentLyric.lines"
           >
             <div class="lyric-wrapper">
-              <div>
+              <div v-if="currentLyric">
                 <p
                   ref="lyricLine"
                   class="text"
                   :class="{'current': currentLineNum ===index}"
                   :key="index"
                   v-for="(line,index) in currentLyric.lines"
-                >{{line.txt}}</p>
+                >{{line.txt}}
+                </p>
               </div>
             </div>
-          </div>
-
+          </Scroll>
         </div>
+
         <div class="bottom">
           <div class="dot-wrapper">
             <span class="dot"></span>
@@ -162,6 +164,8 @@ import { getSongUrl, getSonglyric } from "@/api/song";
 import ProgressBar from "@/base/progress-bar/progress-bar.vue";
 import ProgressCircle from "@/base/progress-circle/progress-circle.vue";
 import Lyric from "lyric-parser";
+import Scroll from "@/base/scroll/scroll.vue";
+
 interface ISongState {
   imgUrl: string;
   singerName: string;
@@ -175,7 +179,8 @@ const namespace: string = "player";
 @Component({
   components: {
     ProgressBar,
-    ProgressCircle
+    ProgressCircle,
+    Scroll
   }
 })
 export default class Player extends Vue {
@@ -219,6 +224,9 @@ export default class Player extends Vue {
 
   $refs!: {
     audio: HTMLAudioElement;
+    lyricList: Scroll;
+    lyricLine: any;
+    // this.$refs.lyricList
   };
 
   created() {
@@ -239,9 +247,6 @@ export default class Player extends Vue {
     }
     this.resetCurrentIndex(list);
     this.setPlayList(list);
-    //  else {
-    // this.next();
-    // }
   }
 
   resetCurrentIndex(list: Array<ISongState>) {
@@ -320,6 +325,23 @@ export default class Player extends Vue {
   }
   handlerLyric({ lineNum }: any) {
     this.currentLineNum = lineNum;
+    if (lineNum > 5) {
+      let lineEl = this.$refs.lyricLine[lineNum - 5];
+      /* eslint-disable */
+      this.$refs.lyricList.scrollToElement(lineEl, 1000);
+    } else {
+      /* eslint-disable */
+      this.$refs.lyricList.scrollTo(0, 0, 1000);
+    }
+
+    //  this.currentLineNum = lineNum
+    //   if (lineNum > 5) {
+    //     let lineEl = this.$refs.lyricLine[lineNum - 5]
+    //     this.$refs.lyricList.scrollToElement(lineEl, 1000)
+    //   } else {
+    //     this.$refs.lyricList.scrollTo(0, 0, 1000)
+    //   }
+    //   this.playingLyric = txt
   }
 
   get cdClass() {
@@ -356,19 +378,9 @@ export default class Player extends Vue {
           // 一定要先把url加载 再获取dom
           that.songUrl = url;
           this.currentLyric = new Lyric(lyric, this.handlerLyric);
-          // setTimeout
-          // this.lyric = setTimeout(() => {
-
-          // })
-          // this.handlerLyric(10);
-          // this.currentLyric.handlder(this.currentLyric.curNum);
           if (this.playing) {
             this.currentLyric.play();
-            // this.handlerLyric(this.currentLyric);
-            // this.currentLyric.handler()
-            // this.currentLyric.handler({ lineNum });
             console.log("currentLyric", this.currentLyric);
-            // this.handlerLyric(this.currentLyric, this.currentLineNum);
           }
           that.$nextTick(() => {
             (that.$refs.audio as any).play();
